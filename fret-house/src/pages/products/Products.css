@@ -1,0 +1,40 @@
+.products-container{
+    margin-top: 6rem;
+    text-align: center;
+
+}
+
+.section-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .products-heading {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .filters-button {
+    margin-left: auto;
+  }
+  
+
+
+.product-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2.5rem;
+    margin-inline: auto;
+    margin-top: 2.5rem;
+}
+
+
+@media(min-width: 50em){
+    .products-container{
+        margin-top: 8rem;
+    }
+    
+}
+

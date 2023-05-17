@@ -209,6 +209,11 @@ body{
   cursor: pointer;
 }
 
+.primary-button:disabled{
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
 
 
 @media (min-width: 50em){

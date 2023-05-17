@@ -12,7 +12,7 @@ import Login from "./pages/auth/login/Login";
 function App() {
   return (
     <div className="App">
-      {/* <Nav /> */}
+      <Nav />
 
       <Routes>
         <Route path="/" element={<Home />} />
