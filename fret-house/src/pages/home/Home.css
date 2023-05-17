@@ -1,0 +1,40 @@
+.hero-section {
+  margin-top: 6rem;
+  text-align: center;
+}
+
+h1 {
+  color: var(--clr-primary-400);
+  max-width: 85%;
+  font-family: var(--ff-accent);
+  font-size: 2rem;
+  margin-inline: auto;
+  line-height: 130%;
+  margin-bottom: 1rem;
+}
+
+.hero-text {
+  margin-top: 1.5rem;
+  margin-inline: auto;
+}
+
+.categories {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.temp button {
+  margin: 10px;
+}
+
+@media (min-width: 50em) {
+  h1 {
+    font-size: 4rem;
+    max-width: 50%;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-text {
+    max-width: 50rem;
+  }
+}
