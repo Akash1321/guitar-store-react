@@ -3,7 +3,7 @@
   text-align: center;
 }
 
-h1 {
+.hero-heading {
   color: var(--clr-primary-400);
   max-width: 85%;
   font-family: var(--ff-accent);
@@ -28,7 +28,7 @@ h1 {
 }
 
 @media (min-width: 50em) {
-  h1 {
+  .hero-heading {
     font-size: 4rem;
     max-width: 50%;
     margin-bottom: 2.5rem;
