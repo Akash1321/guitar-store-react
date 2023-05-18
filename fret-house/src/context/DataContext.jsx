@@ -3,7 +3,7 @@ import { createContext, useEffect, useContext, useReducer } from "react";
 const DataContext = createContext();
 
 const initialState = {
-  products: []
+  products: [],
 };
 
 const dataReducer = (state, action) => {
@@ -31,6 +31,7 @@ export const DataProvider = ({ children }) => {
             console.log(error);
         }
     })()
+
   }, []);
 
   return <DataContext.Provider value={{state}}>{children}</DataContext.Provider>;

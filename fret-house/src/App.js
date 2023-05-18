@@ -1,6 +1,7 @@
 import {Routes, Route} from "react-router-dom";
 import Mockman from "mockman-js";
 
+// import {useData} from "./context/DataContext";
 import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Home from "./pages/home/Home";
@@ -13,6 +14,7 @@ import ProductDetails from "./pages/productDetails/ProductDetails";
 function App() {
   return (
     <div className="App">
+
       <Nav />
 
       <Routes>

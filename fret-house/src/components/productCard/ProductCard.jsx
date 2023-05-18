@@ -28,7 +28,7 @@ const ProductCard = (product) => {
       </div>
 
       <div className="image-container">
-        <img src={image} alt={title} className="productImage" />
+        <img src={image} alt={title} />
       </div>
 
       <div className="card-details">
