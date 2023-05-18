@@ -75,7 +75,7 @@ export const products = [
       "Febo Waanders is a respected builder who lives and works in Daarlerveen. Coming from a family of woodworkers, Febo was the first to combine this passion with his love of music. From this came an extraordinary talent for building guitars. Built with a combination of walnut for the back and sides and Sitka spruce for the top.",
     inStock: true,
     rating: "4.0",
-    price: "1050",
+    price: "10,500",
     category: "acoustic",
   },
   {

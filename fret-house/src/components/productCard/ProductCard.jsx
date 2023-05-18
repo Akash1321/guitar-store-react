@@ -1,11 +1,25 @@
+import { useNavigate } from "react-router-dom";
 import { Star, Heart } from "react-feather";
 
 import "./ProductCard.css";
 
 const ProductCard = (product) => {
-  const { id, title, image, inStock, rating, price } = product;
+  const { _id, title, image, inStock, rating, price } = product;
+
+  const navigate = useNavigate();
+
+  const handleCardDetail = (id) => {
+    navigate(`/products/${id}`)
+  }
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation()
+
+    console.log("button clicked")
+  }
+
   return (
-    <li className="card bg-neutral-400 text-primary-400 fw-regular">
+    <li className="card bg-neutral-400 text-primary-400 fw-regular" onClick={() => handleCardDetail(_id)}>
       <div className="label">
         <p className={inStock ? "text-accent-green" : "text-accent-red"}>
           {inStock ? "In Stock" : "Out of Stock"}
@@ -14,7 +28,7 @@ const ProductCard = (product) => {
       </div>
 
       <div className="image-container">
-        <img src={image} alt={title} style={{ maxWidth: "100%" }} />
+        <img src={image} alt={title} className="productImage" />
       </div>
 
       <div className="card-details">
@@ -25,7 +39,7 @@ const ProductCard = (product) => {
         <p className="product-name">{title}</p>
       </div>
 
-      <button className="primary-button product-button" disabled={!inStock}>
+      <button className="primary-button product-button" disabled={!inStock} onClick={handleAddToCart}>
         ADD TO CART
       </button>
     </li>
