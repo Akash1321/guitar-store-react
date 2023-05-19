@@ -40,7 +40,7 @@ const Nav = () => {
               type="text"
               name="search"
               placeholder="Search"
-              className="bg-accent-bg fw-regular"
+              className="bg-accent-bg fw-regular search"
             />
           </label>
         </form>
