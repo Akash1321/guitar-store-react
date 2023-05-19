@@ -1,11 +1,3 @@
-.showFilter{
-    display: block;
-}
-
-.hideFilter{
-    display: none;
-}
-
 .filter-container{
     border-left: 1px solid var(--clr-primary-400);
     background-color: white;
@@ -23,6 +15,10 @@
 
 .filter-view{
     align-self: flex-end;
+}
+
+.hideItem{
+    display: none;
 }
 
 .category-choice{

@@ -4,19 +4,21 @@
 }
 
 .section-header {
+    padding-inline: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
+
   
-  .products-heading {
+  /* .products-heading {
     flex-grow: 1;
     text-align: center;
   }
   
   .filters-button {
     margin-left: auto;
-  }
+  } */
   
 
 
