@@ -26,7 +26,7 @@ export const DataProvider = ({ children }) => {
             const products = await response.json();
 
             dispatch({type: "GET_PRODUCTS", payload: products })
-            console.log("useEffect run")
+            
         }catch(error){
             console.log(error);
         }
