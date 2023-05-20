@@ -1,0 +1,41 @@
+.filter-container{
+    border-left: 1px solid var(--clr-primary-400);
+    background-color: white;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: 3.5rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+}
+
+.filter-view{
+    align-self: flex-end;
+}
+
+.hideItem{
+    display: none;
+}
+
+.category-choice{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-options{
+    display: flex;
+    max-width: 18rem;
+    gap: 1.5rem;
+}
+
+.separate-option{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+

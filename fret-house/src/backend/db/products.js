@@ -75,7 +75,7 @@ export const products = [
       "Febo Waanders is a respected builder who lives and works in Daarlerveen. Coming from a family of woodworkers, Febo was the first to combine this passion with his love of music. From this came an extraordinary talent for building guitars. Built with a combination of walnut for the back and sides and Sitka spruce for the top.",
     inStock: true,
     rating: "4.0",
-    price: "10,500",
+    price: "10500",
     category: "acoustic",
   },
   {
@@ -87,7 +87,7 @@ export const products = [
       "The American Professional II Precision Bass draws on over sixty years of innovation, inspiration and evolution to meet the demands of today's player.",
     inStock: true,
     rating: "5.0",
-    price: "60,990",
+    price: "60990",
     category: "bass",
   },
   {
@@ -99,7 +99,7 @@ export const products = [
       "This 1958 Precision Bass recreates the legendary P-bass as only the Fender Custom Shop can, with a few custom touches to enhance the playing experience. The two-piece alder body carries a Vintage White finish with Heavy Relic finish, giving it the look of a true 'road warrior' that has seen many a stage.",
     inStock: true,
     rating: "3.9",
-    price: "23,399",
+    price: "23399",
     category: "bass",
   },
   {
@@ -111,7 +111,7 @@ export const products = [
       "The Vintage Custom 1951 Precision Bass offers the features that made the original the undisputed champion of working bassists worldwide, including an extremely fast and comfortable quartersawn maple neck with a 7.25 fingerboard radius and '51 Vintage P bass bridge. It also features an ash  body with a NOS lacquer finish that allows the instrument to breathe more organically and show some of the natural grain through the finish.",
     inStock: false,
     rating: "2.6",
-    price: "19,570",
+    price: "19570",
     category: "bass",
   },
   {
@@ -123,7 +123,7 @@ export const products = [
       "The StingRay was the first production bass to feature a built-in active EQ, and it has stayed true to this principle ever since. The five-string bass is equipped with a powerful humbucker with active tone control, which together make for an extremely versatile instrument.",
     inStock: true,
     rating: "4.5",
-    price: "55,000",
+    price: "55000",
     category: "bass",
   },
   {
@@ -135,7 +135,7 @@ export const products = [
       "The Sandberg California VS Passive offers the reliability of modern instruments, but also a classic sound. The alder body is provided with a 'Hardcore Aged' finish with which Sandberg shows that they are masters of artificially aging guitars. In addition, the brand also produces all its basses in a left-handed version, which is of course very cool.",
     inStock: false,
     rating: "3.2",
-    price: "21,390",
+    price: "21390",
     category: "bass",
   },
   {
@@ -147,7 +147,7 @@ export const products = [
       "This California II from the new California Central Series guarantees countless classic humbucker sounds: crystal clear with the treble fully open, warm and round with the treble further closed. The alder body is connected to a maple neck, offering comfortable playability.",
     inStock: true,
     rating: "4.0",
-    price: "41,785",
+    price: "41785",
     category: "bass",
   },
   {
@@ -159,7 +159,7 @@ export const products = [
       "This J4 is simply a bass guitar that will appeal to any bass guitarist. It is in excellent condition and has only a few minor signs of wear next to the relic. Comes in a case with a certificate of authenticity.",
     inStock: true,
     rating: "3.5",
-    price: "29,850",
+    price: "29850",
     category: "bass",
   },
   {
@@ -171,7 +171,7 @@ export const products = [
       "This Custom Shop 1956 Stratocaster takes you back to the early days of the Stratocaster in terms of specs. In terms of appearance, it's like going back in time and buying a new one!. The maple neck has a '10/56 V' profile and a 9.5 inch radius fingerboard.",
     inStock: true,
     rating: "4.1",
-    price: "39,455",
+    price: "39455",
     category: "electric",
   },
   {
@@ -183,7 +183,7 @@ export const products = [
       "When the Stratocaster first appeared on the scene in 1954, its distinctive, distinctive sound took the world by storm, making the original 1950s models some of the most coveted guitars today. As a result, Fender has ensured that the '57 Custom Shop Strat encapsulates all that scintillating, vintage tonal quality.",
     inStock: false,
     rating: "3.3",
-    price: "25,990",
+    price: "25990",
     category: "electric",
   },
   {
@@ -195,7 +195,7 @@ export const products = [
       "Gibson Custom Shop is the pinnacle of craftsmanship, quality and sound excellence. Each instrument celebrates Gibson's legacy through accuracy, authenticity and attention to detail.",
     inStock: true,
     rating: "2.2",
-    price: "17,890",
+    price: "17890",
     category: "electric",
   },
   {
@@ -207,7 +207,7 @@ export const products = [
       "auffman Guitars builds guitars that pay homage to the iconic models that have dominated the guitar world for so long. From the headquarters in Alphen aan de Rijn, the guitars are carefully provided with a beautifully aged look that gives the instrument a played-in feel.",
     inStock: true,
     rating: "4.6",
-    price: "50,499",
+    price: "50499",
     category: "electric",
   },
   {
@@ -219,7 +219,7 @@ export const products = [
       "The Kauffmann Cozy combines vintage looks with an extremely comfortable playing feel. It is an offset guitar with a fairly large body. Despite its size, it weighs only 3 kilograms, thanks to the lightweight Paulownia body.",
     inStock: false,
     rating: "4.3",
-    price: "58,300",
+    price: "58300",
     category: "electric",
   },
   {
@@ -231,7 +231,7 @@ export const products = [
       "With the Stradovari, Maybach has produced a versatile instrument. With its three single-coil pickups and five-position switch, there are plenty of tonal options available to produce any tone you desire. With a Swamp Ash body, a maple neck and a rosewood fingerboard, this guitar immediately gives a familiar feeling.",
     inStock: true,
     rating: "4.8",
-    price: "69,000",
+    price: "69000",
     category: "electric",
   },
   {
@@ -243,7 +243,7 @@ export const products = [
       "The Paul's Guitar model uses two TCI humbuckers (Tuned Capacitance and Inductance) in combination with two mini switches that allow you to switch each of the pickups from humbucker to true single coil mode.",
     inStock: true,
     rating: "5.0",
-    price: "85,599",
+    price: "85599",
     category: "electric",
   },
   {
@@ -255,7 +255,7 @@ export const products = [
       "The Schecter Banshee Elite-6 is an extremely expressive instrument. Not only do you get the rock-solid construction and great playability that Schecter Diamond Series guitars are known for, with a pair of Schecter USA SuperCharger Mach-6 humbucker pickups you're guaranteed amazing tones whether fingerpicking delicately or strumming aggressively.",
     inStock: true,
     rating: "2.8",
-    price: "24,900",
+    price: "24900",
     category: "electric",
   },
   {
@@ -279,7 +279,7 @@ export const products = [
       "Gibson cases are designed to protect your Gibson instrument in style. Made from the highest quality materials and hardware, they meet Gibson's strict factory specifications and come in a variety of sizes to perfectly fit your beloved Gibson.",
     inStock: false,
     rating: "4.8",
-    price: "8,500",
+    price: "8500",
     category: "accessories",
   },
   {
