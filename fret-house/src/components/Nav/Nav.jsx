@@ -4,9 +4,12 @@ import { Search, Heart, ShoppingCart, User } from "react-feather";
 import "./Nav.css";
 import fretHouseLogo from "../../assets/fretHouseLogo.svg";
 import {useAuth} from "../../context/AuthContext";
+import {useData} from "../../context/DataContext";
+import ItemsCount from "../ItemsCount/ItemsCount";
 
 const Nav = () => {
   const  {token} = useAuth();
+  const {state: {cartList, wishList}} = useData();
 
   const navigate = useNavigate();
 
@@ -64,11 +67,13 @@ const Nav = () => {
               <User className="nav-icons" onClick={goToProfile}/>
             </li>
           )}
-          <li>
+          <li className="icon-with-count">
             <Heart className="nav-icons" onClick={goToWishlist} />
+            <ItemsCount count={wishList.length}/>
           </li>
-          <li>
+          <li className="icon-with-count">
             <ShoppingCart className="nav-icons" onClick={goToCart}/>
+            <ItemsCount count={cartList.length}/>
           </li>
         </ul>
       </div>

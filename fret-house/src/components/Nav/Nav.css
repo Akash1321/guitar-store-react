@@ -49,6 +49,11 @@ form {
   gap: 1rem;
 }
 
+.icon-with-count{
+  display: flex;
+  position: relative;
+}
+
 .nav-icons {
   width: 1.5rem;
   height: 1.5rem;
