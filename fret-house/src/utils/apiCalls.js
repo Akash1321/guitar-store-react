@@ -58,12 +58,45 @@ export const postToCartlist = (token, product) => {
 }
 
 export const removeFromCartlist = (token, selectedId) => {
-    return fetch(`/api/user/wishlist/${selectedId}`, {
+    return fetch(`/api/user/cart/${selectedId}`, {
         method: "DELETE",
 
         headers: {
             "authorization": token,
         },
+    })
+}
+
+
+export const increaseQuantity = (token, selectedId) => {
+    return fetch(`/api/user/cart/${selectedId}`, {
+        method: "POST",
+
+        headers: {
+            "authorization": token,
+        },
+
+        body: JSON.stringify({
+            action: {
+                type: "increment"
+            }
+        })
+    })
+}
+
+export const decreaseQuantity = (token, selectedId) => {
+    return fetch(`/api/user/cart/${selectedId}`, {
+        method: "POST",
+
+        headers: {
+            "authorization": token,
+        },
+
+        body: JSON.stringify({
+            action: {
+                type: "decrement"
+            }
+        })
     })
 }
 
