@@ -94,10 +94,6 @@ export const FilterProvider = ({ children }) => {
 
     }
    })()
-   
-
-   console.log(typeof priceSelected);
-
 
   return (
     <FilterContext.Provider

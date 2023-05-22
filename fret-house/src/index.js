@@ -7,7 +7,9 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { DataProvider } from "./context/DataContext";
-import {FilterProvider} from "./context/FilterContext"
+import {FilterProvider} from "./context/FilterContext";
+import { AuthProvider } from "./context/AuthContext";
+
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
@@ -18,11 +20,13 @@ makeServer();
 root.render(
   <StrictMode>
     <Router>
-      <DataProvider>
-        <FilterProvider>
-         <App />
-        </FilterProvider>
-      </DataProvider>
+      <AuthProvider>
+       <DataProvider>
+         <FilterProvider>
+           <App />
+         </FilterProvider>
+       </DataProvider>
+      </AuthProvider>
     </Router>
   </StrictMode>
 );

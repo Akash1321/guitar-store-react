@@ -4,7 +4,6 @@
 }
 
 .section-header {
-    padding-inline: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,8 +30,8 @@
     margin-top: 2.5rem;
 }
 
-
 @media(min-width: 50em){
+
     .products-container{
         margin-top: 8rem;
     }

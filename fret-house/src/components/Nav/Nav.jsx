@@ -3,9 +3,10 @@ import { Search, Heart, ShoppingCart, User } from "react-feather";
 
 import "./Nav.css";
 import fretHouseLogo from "../../assets/fretHouseLogo.svg";
+import {useAuth} from "../../context/AuthContext";
 
 const Nav = () => {
-  const token = false;
+  const  {token} = useAuth();
 
   const navigate = useNavigate();
 
@@ -23,6 +24,10 @@ const Nav = () => {
 
   const goToCart = () => {
     navigate("/cart")
+  }
+
+  const goToProfile = () => {
+    navigate("/profile")
   }
 
 
@@ -56,7 +61,7 @@ const Nav = () => {
           </li>
           {token && (
             <li>
-              <User className="nav-icons" />
+              <User className="nav-icons" onClick={goToProfile}/>
             </li>
           )}
           <li>
