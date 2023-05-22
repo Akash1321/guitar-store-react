@@ -6,12 +6,11 @@ import {useNavigate, useLocation} from "react-router-dom";
 const AuthContext = createContext();
 
 
+
+
 const userLogin = (email, password) => {
     return fetch("/api/auth/login", {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
 
         body: JSON.stringify({
             email: email,
@@ -23,9 +22,6 @@ const userLogin = (email, password) => {
 const userSignUp = (name, email, password) => {
     return fetch("/api/auth/signup", {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
 
         body: JSON.stringify({
             name: name,
