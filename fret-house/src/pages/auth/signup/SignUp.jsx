@@ -1,35 +1,73 @@
-import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 
-import {useAuth} from "../../../context/AuthContext";
+import { Link } from "react-router-dom";
+import {Eye, EyeOff} from "react-feather";
+
+import "./SignUp.css";
+import { useAuth } from "../../../context/AuthContext";
 
 const SignUp = () => {
-    const navigate = useNavigate();
-    const {handleSignUp} = useAuth();
+    const [passwordType, setPasswordType] = useState("password");
+  const { handleSignUp } = useAuth();
 
-    const handleOnSubmit = (e) => {
-        e.preventDefault();
-        const form  = e.target
-        const name = form.userName.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        handleSignUp(name, email, password);
-    }
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.userName.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    handleSignUp(name, email, password);
+  };
 
-    return(
-        <div style={{marginTop: "8rem"}}>
-            <h1 style={{fontWeight: 'bold', fontSize: "24px" }}>This is signUp page</h1>
+  return (
+    <main className="container login-container text-primary-400">
+      <h1 className="fs-heading fw-bold">SIGN UP</h1>
 
-            <form onSubmit={handleOnSubmit}>
-            <label>Name: <input type="text" name="userName" required/></label>
-            <label>Email: <input type="text" name="email" required/></label>
-            <label>Password: <input type="password" name="password" required/></label>
-            <label>confirm password: <input type="password" required/></label>
+      <form className="login-form" onSubmit={handleOnSubmit}>
+        <label className="field-labels">
+          <input
+            type="text"
+            name="userName"
+            placeholder="Name"
+            required
+            className="login-fields bg-accent-bg fw-regular"
+          />
+        </label>
+        <label className="field-labels">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            className="login-fields bg-accent-bg fw-regular"
+          />
+        </label>
+        <label className="field-labels">
+          <input
+            type={passwordType}
+            name="password"
+            placeholder="Password"
+            required
+            className="login-fields bg-accent-bg fw-regular"
+          />
+          {
+            passwordType === "password" ? <EyeOff size={20} onClick={() => setPasswordType("text")}/> : <Eye size={20} onClick={() => setPasswordType("password")}/>
+          }
+        </label>
+        <label className="field-labels">
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            required
+            className="login-fields bg-accent-bg fw-regular"
+          />
+        </label>
 
-            <button>Sign up</button>
-        </form>
-        <button onClick={() => navigate("/login")}> Login </button>
-        </div>
-    )
+        <button className="primary-button login-buttons">SIGN UP</button>
+      </form>
+      <p>Already have an account <Link to="/login">Login</Link></p>
+    </main>
+  );
 };
 
 export default SignUp;

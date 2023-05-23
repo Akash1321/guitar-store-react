@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Search, Heart, ShoppingCart, User } from "react-feather";
+import { Search, Heart, ShoppingCart, User, X } from "react-feather";
 
 import "./Nav.css";
 import fretHouseLogo from "../../assets/fretHouseLogo.svg";
@@ -33,6 +33,10 @@ const Nav = () => {
     navigate("/profile")
   }
 
+  const handleSearchCancel = () => {
+    
+  }
+
 
   return (
     <nav className="nav-bar bg-accent-bg">
@@ -41,7 +45,7 @@ const Nav = () => {
           <img src={fretHouseLogo} alt="fret house logo" />
         </div>
 
-        <form>
+        <form className="search-form">
           <label className="searchInput text-primary-300">
             <Search size={24} />
             <input
@@ -50,6 +54,7 @@ const Nav = () => {
               placeholder="Search"
               className="bg-accent-bg fw-regular search"
             />
+            <X size={24} className="cancel-search" onClick={handleSearchCancel}/>
           </label>
         </form>
 

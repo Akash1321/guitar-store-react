@@ -13,6 +13,7 @@ import Login from "./pages/auth/login/Login";
 import ProductDetails from "./pages/productDetails/ProductDetails";
 import Profile from "./pages/profile/Profile";
 import SignUp from "./pages/auth/signup/SignUp";
+import Logout from "./pages/auth/logout/Logout";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="mockman" element={<Mockman />} />
         <Route

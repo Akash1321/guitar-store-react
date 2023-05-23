@@ -3,21 +3,23 @@
     height: 1.25rem;
     border-radius: 50%;
     font-size: 0.8rem;
-    font-weight: var(--fw-thin);
+    font-weight: var(--fw-regular);
     color: var(--clr-neutral-400);
     background-color: var(--clr-primary-400);
     text-align: center;
     position: absolute;
     right: -10px;
     top: -5px;
+    
 }
 
 
 @media(min-width: 50em){
     .itemsCount{
-        
-        right: -8px;
-        top: -3px;
+        font-size: 1rem;
+        line-height: 130%;
+        right: -10px;
+        top: -5px;
         
     }
 }
