@@ -18,6 +18,7 @@ const initialState = {
   products: [],
   wishList: [],
   cartList: [],
+  addressList: [],
 };
 
 const dataReducer = (state, action) => {
@@ -50,6 +51,16 @@ const dataReducer = (state, action) => {
               : product
           ),
         };
+
+    case "ADD_ADDRESS":
+      return{
+        ...state, addressList: [...state.addressList, action.payload]
+      }
+
+    case "DELETE_ADDRESS":
+      return{
+        ...state, addressList: state.addressList.filter(({id}) => id !== action.payload)
+      }
 
     default:
       return state;

@@ -14,11 +14,12 @@ import ProductDetails from "./pages/productDetails/ProductDetails";
 import Profile from "./pages/profile/Profile";
 import SignUp from "./pages/auth/signup/SignUp";
 import Logout from "./pages/auth/logout/Logout";
+import Checkout from "./pages/checkout/Checkout";
 
 function App() {
   return (
     <div className="App">
-      <Nav />
+     <Nav /> 
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -45,6 +46,7 @@ function App() {
           }
         />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   );

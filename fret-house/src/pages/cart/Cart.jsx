@@ -1,8 +1,12 @@
+import {useNavigate} from "react-router-dom";
+
 import "./Cart.css";
 import { useData } from "../../context/DataContext";
 import CardInCart from "./CardInCart/CardInCart";
 
+
 const Cart = () => {
+  const navigate = useNavigate();
   const { state } = useData();
 
   const totalPrice = state.cartList?.reduce(
@@ -23,7 +27,7 @@ const Cart = () => {
         </ul>
       </section>
 
-      <section class="cartDetails-section text-primary-400">
+      <section className="cartDetails-section text-primary-400">
         <h2 className="fs-heading fw-semiBold">Cart Details</h2>
         <table className="text-primary-400" >
           <thead>
@@ -41,16 +45,19 @@ const Cart = () => {
                 </tr>
               ))}
           </tbody>
-        
-            <tr className="table-footer">
+
+          <tfoot>
+          <tr className="table-footer">
               <td className="fw-semiBold">TOTAL PRICE </td>
               <td className="fw-semiBold">₹ {totalPrice}</td>
             </tr>
+          </tfoot>
+            
           
           
         </table>
 
-        <button className="primary-button">CHECKOUT</button>
+        <button className="primary-button" onClick={() => navigate("/checkout")}>PROCEED TO CHECKOUT</button>
       </section>
     </div>
   );
