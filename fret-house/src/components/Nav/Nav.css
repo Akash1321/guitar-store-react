@@ -81,7 +81,13 @@
 
   .search-form {
     display: block;
+    position: relative;
   }
+
+  /* .search-results{
+    position: absolute;
+  } */
+
 
   .links-container {
     gap: 2.5rem;
