@@ -1,5 +1,8 @@
 .checkout-container{
     margin-top: 8rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .address-section{
@@ -11,11 +14,11 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    gap: 5rem;
 }
 
 
 .select-address{
-    color: #551A8B;
     cursor: pointer;
 }
 
@@ -53,4 +56,41 @@
 
 .hide-addAddress{
     align-self: flex-end;
+}
+
+.addressSelected{
+    border: 1px solid var(--clr-primary-400);
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.order-detail-section{
+    max-width: 30rem;
+    /* border: 1px solid var(--clr-primary-400); */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.order-details{
+    display: flex;
+    justify-content: space-between;
+    gap: 10rem;
+    padding: 0.5rem;
+}
+
+.fd-instruction{
+    padding-inline: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.final-price{
+    margin-bottom: 1rem;
+}
+
+.no-address{
+    /* color: hsla(44, 14%, 15%, 0.75); */
+    color: var(--clr-accent-red);
+    text-align: center;
 }

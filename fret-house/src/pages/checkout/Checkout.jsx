@@ -7,9 +7,13 @@ import "./Checkout.css";
 import {useData} from "../../context/DataContext";
 
 const Checkout = () => {
-    const [address, setAddress] = useState({});
-    const [addressToggle, setAddressToggle] = useState({addresses: false, form: false});
     const {state, dispatch} = useData();
+
+    const [addressToggle, setAddressToggle] = useState({addresses: false, form: false});
+    const [orderDetails, setOrderDetails] = useState({
+        productsOrdered: state.cartList,
+        address: {}
+    })
 
     const handleAllAddressesView = () => {
         setAddressToggle(prev => ({...prev, addresses: !prev.addresses}))
@@ -31,8 +35,20 @@ const Checkout = () => {
         const phoneNumber = form.number.value;
         console.log(userName, address, city, state, pincode, phoneNumber);
         dispatch({type: "ADD_ADDRESS", payload: {id: uuid(), userName, address, city, state, pincode, phoneNumber}})
-
     }
+
+    const handleAddressSelected = (addressSelected) => {
+        const address = state.addressList.find(({id}) => id === addressSelected)
+        setOrderDetails(prev => ({...prev, address}))
+        setAddressToggle({addresses: false, form: false})
+    }
+
+    const totalPrice = state.cartList?.reduce(
+        (total, items) => Number(items.price) + total,
+        0
+      );
+
+    const {id, userName, address, city, pincode, phoneNumber} = orderDetails.address;
 
     return (
         <main className="container checkout-container text-primary-400">
@@ -47,8 +63,8 @@ const Checkout = () => {
             {addressToggle.addresses && <div>
                 <ul className="address-container">
                 {state?.addressList.map(address => (
-                    <li key={address.id} className="addresses">
-                        <input type="radio" name="address-selction" value={address.address}/>
+                    <li key={address.id} className="addresses" onClick={() => handleAddressSelected(address.id)}>
+                        <input type="radio" name="addressSelection" value={address.address} checked={address.id === orderDetails.address.id}/>
                         <div>
                         <h3 className="fw-semiBold">{address.userName}</h3>
                         <p>{address.address}, {address.city}, {address.state}, {address.pincode}</p> 
@@ -88,7 +104,34 @@ const Checkout = () => {
                 <button className="primary-button">Add Address</button>
 
             </form>}
+            {console.log(orderDetails)}
             </div>}
+
+            {id ? <div className="addressSelected">
+                <h3 className="fw-bold">{userName}</h3>
+                <p>{address}, {city}, {orderDetails.address.state}</p>
+                <p><span className="fw-semiBold text-primary-300">Pincode-</span> {pincode}</p>
+                <p><span className="fw-semiBold text-primary-300">Phone no.-</span> {phoneNumber}</p>
+                </div> : <p className="fw-bold no-address">No Address Selected</p>}
+           </section>
+
+           <section className="order-detail-section bg-neutral-400">
+            <h2 className="fs-heading fw-semiBold od-heading">Order Details</h2>
+            <div className="order-details">
+                <p>Price</p>
+                <p>₹ {totalPrice}</p>
+            </div>
+            <div className="order-details">
+                <p>Delivery Charges</p>
+                <p>{totalPrice > 1000 ? "Free" : 100}</p>
+            </div>
+            <p className="text-primary-300 fd-instruction">Free Delivery for orders above 1000</p>
+            <hr />
+            <div className="order-details final-price">
+                <p className="fw-semiBold">Total Price</p>
+                <p>₹ {totalPrice < 1000 ? totalPrice + 100 : totalPrice}</p>
+            </div>
+            <button className="primary-button">Place Order</button>
            </section>
          
         </main>
