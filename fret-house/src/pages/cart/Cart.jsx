@@ -28,34 +28,29 @@ const Cart = () => {
       </section>
 
       <section className="cartDetails-section text-primary-400">
-        <h2 className="fs-heading fw-semiBold">Cart Details</h2>
-        <table className="text-primary-400" >
-          <thead>
-          <tr>
-            <th>Product</th>
-            <th>Price</th>
-          </tr>
-          </thead>
+        <h2 className="fs-heading fw-semiBold">Cart Price Details</h2>
+        <div className="text-primary-400 detail-body">
 
-          <tbody className="body">
+          <div className="detail-headings fw-semiBold">
+            <p>Product</p>
+            <p>Price</p>
+          </div>
+          <hr />
+          <div className="items-body">
           {state.cartList?.map(({ _id, price, title, qty }) => (
-                <tr key={_id}>
-                  <td className="cartItemsTitle fw-semiBold text-primary-300">{title} (X {qty})</td>
-                  <td className="cartItemsPrice fw-semiBold text-primary-300">₹ {price}</td>
-                </tr>
+                <div key={_id} className="items">
+                  <p className="cartItemsTitle">{title} <span className="fw-semiBold">(X {qty})</span></p>
+                  <p className="cartItemsPrice">₹ {price}</p>
+                </div>
               ))}
-          </tbody>
-
-          <tfoot>
-          <tr className="table-footer">
-              <td className="fw-semiBold">TOTAL PRICE </td>
-              <td className="fw-semiBold">₹ {totalPrice}</td>
-            </tr>
-          </tfoot>
-            
+          </div>
+          <hr />
+          <div className="detail-summary">
+              <p className="fw-semiBold">TOTAL PRICE </p>
+              <p className="fw-semiBold">₹ {totalPrice}</p>
+            </div>
           
-          
-        </table>
+        </div>
 
         <button className="primary-button" onClick={() => navigate("/checkout")}>PROCEED TO CHECKOUT</button>
       </section>
