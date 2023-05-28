@@ -3,22 +3,25 @@
 
 }
 
-.section-header {
+.section-header h1{
+  text-align: center;
+  color: hsla(44, 14%, 15%, 0.75);
+
+}
+
+.section-header-filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1rem;
   }
 
-  
-  /* .products-heading {
-    flex-grow: 1;
-    text-align: center;
+  .all-products{
+    margin-right: 0.5rem;
+    accent-color: var(--clr-primary-300);
+    width: 1rem;
+    height: 1rem;
   }
-  
-  .filters-button {
-    margin-left: auto;
-  } */
-  
 
 
 .product-list{
@@ -34,6 +37,10 @@
 
     .products-container{
         margin-top: 8rem;
+    }
+
+    .section-header h1{
+      font-size: 2.5rem;
     }
     
 }

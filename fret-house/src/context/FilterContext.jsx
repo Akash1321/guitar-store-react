@@ -83,7 +83,7 @@ export const FilterProvider = ({ children }) => {
       ? ratingFiltered
       : ratingFiltered.filter(({ category }) => categories.includes(category));
 
-   const pricingFiltered = categoryFiltered.filter(({ price }) => Number(price) >= priceSelected);
+   const pricingFiltered = categoryFiltered.filter(({ price }) => Number(price) > 0 && Number(price) <= priceSelected);
 
    const productsSorted = (() => {
     switch(sort){

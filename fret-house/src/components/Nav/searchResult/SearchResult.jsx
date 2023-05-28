@@ -16,7 +16,7 @@ const SearchResult = ({searchInput, setSearchInput}) => {
 
     return (
         <>
-        {searchInput && <div className="search-result-container bg-accent-bg text-primary-400">
+        {searchInput && <div className="search-result-container text-primary-400">
         <ul className="search-results">
             {searchedProducts.map(({_id, title, image, price}) => (
                 <li className="result-list" onClick={() => handleSearchNavigate(_id)}>

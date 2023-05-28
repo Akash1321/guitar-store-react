@@ -6,15 +6,11 @@ import ProductFilter from "./components/filters/ProductFilter";
 import "./Products.css";
 
 const Products = () => {
-  const [view, setView] = useState({ filters: false, types: false });
+  const [view, setView] = useState(false);
   const {filterProduct, productsSorted} = useFilter();
 
   const handleFilterView = () => {
-    setView(prev => ({...prev, filters: !prev.filters}))
-  };
-
-  const handleTypesView = () => {
-    setView((prev) => ({ ...prev, types: !prev.types }));
+    setView(prev => !prev)
   };
 
   const handleInStock = (e) => {
@@ -26,15 +22,18 @@ const Products = () => {
   return (
     <main className="container products-container">
 
-      <ProductFilter view={view} handleFilterView={handleFilterView} handleTypesView={handleTypesView}/>
+      <ProductFilter view={view} handleFilterView={handleFilterView}/>
 
       <header className="section-header">
+        <h1 className="fs-heading fw-bold">All Products</h1>
+        <div className="section-header-filters">
         <label className="fw-semiBold text-primary-400">
           <input type="checkbox" className="all-products" onChange={handleInStock}/>
             Show All
           </label>
-         <h1 className="fs-heading fw-bold products-heading">All Products</h1>
         <button className="accent-button filters-button" onClick={handleFilterView}>Filters</button>
+        </div>
+        
       </header>
 
       <ul className="product-list">
