@@ -62,6 +62,7 @@
 .icon-with-count{
   display: flex;
   position: relative;
+  cursor: context-menu;
 }
 
 .nav-icons {

@@ -100,12 +100,12 @@ const Nav = () => {
               <User className="nav-icons" onClick={goToProfile}/>
             </li>
           )}
-          <li className="icon-with-count">
-            <Heart className="nav-icons" onClick={goToWishlist} />
+          <li className="icon-with-count" onClick={goToWishlist}>
+            <Heart className="nav-icons"  />
             <ItemsCount count={wishList.length}/>
           </li>
-          <li className="icon-with-count">
-            <ShoppingCart className="nav-icons" onClick={goToCart}/>
+          <li className="icon-with-count" onClick={goToCart}>
+            <ShoppingCart className="nav-icons" />
             <ItemsCount count={cartList.length}/>
           </li>
         </ul>

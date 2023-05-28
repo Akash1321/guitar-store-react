@@ -1,9 +1,8 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./Cart.css";
 import { useData } from "../../context/DataContext";
 import CardInCart from "./CardInCart/CardInCart";
-
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -30,29 +29,34 @@ const Cart = () => {
       <section className="cartDetails-section text-primary-400">
         <h2 className="fs-heading fw-semiBold">Cart Price Details</h2>
         <div className="text-primary-400 detail-body">
-
           <div className="detail-headings fw-semiBold">
             <p>Product</p>
             <p>Price</p>
           </div>
           <hr />
           <div className="items-body">
-          {state.cartList?.map(({ _id, price, title, qty }) => (
-                <div key={_id} className="items">
-                  <p className="cartItemsTitle">{title} <span className="fw-semiBold">(X {qty})</span></p>
-                  <p className="cartItemsPrice">₹ {price}</p>
-                </div>
-              ))}
+            {state.cartList?.map(({ _id, price, title, qty }) => (
+              <div key={_id} className="items">
+                <p className="cartItemsTitle">
+                  {title} <span className="fw-semiBold">(X {qty})</span>
+                </p>
+                <p className="cartItemsPrice">₹ {price}</p>
+              </div>
+            ))}
           </div>
           <hr />
           <div className="detail-summary">
-              <p className="fw-semiBold">TOTAL PRICE </p>
-              <p className="fw-semiBold">₹ {totalPrice}</p>
-            </div>
-          
+            <p className="fw-semiBold">TOTAL PRICE </p>
+            <p className="fw-semiBold">₹ {totalPrice}</p>
+          </div>
         </div>
 
-        <button className="primary-button" onClick={() => navigate("/checkout")}>PROCEED TO CHECKOUT</button>
+        <button
+          className="primary-button"
+          onClick={() => navigate("/checkout")}
+        >
+          PROCEED TO CHECKOUT
+        </button>
       </section>
     </div>
   );
