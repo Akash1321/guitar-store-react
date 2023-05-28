@@ -1,57 +1,84 @@
 import { Plus, Minus } from "react-feather";
 
-import "./CardInCart.css"
+import "./CardInCart.css";
 import { useAuth } from "../../../context/AuthContext";
 import { useData } from "../../../context/DataContext";
+import { checkPresence } from "../../../utils/checkPresence";
 
 const CardInCart = (product) => {
-    const { token } = useAuth();
+  const { token } = useAuth();
   const {
+    state: { wishList },
     handleRemoveFromCart,
     handleIncreaseQuantity,
     handleDecreaseQuantity,
+    handleAddToWishlist,
   } = useData();
 
-  const handlePlusQuantity = (selectedId) => {
-    handleIncreaseQuantity(token, selectedId);
+  const { _id, title, image, price, qty } = product;
+
+  const handlePlusQuantity = () => {
+    handleIncreaseQuantity(token, _id);
   };
 
-  const handleMinusQuantity = (quantity, selectedId) => {
-    if (quantity === 1) {
-      handleRemoveFromCart(token, selectedId);
+  const handleMinusQuantity = () => {
+    if (qty < 1) {
+      handleRemoveFromCart(token, _id);
     } else {
-      handleDecreaseQuantity(token, selectedId);
+      handleDecreaseQuantity(token, _id);
     }
   };
 
-  const handleOnRemove = (id) => {
-    handleRemoveFromCart(token, id);
+  const onMoveToWishlist = () => {
+    if (!checkPresence(wishList, _id)) {
+      handleAddToWishlist(token, product);
+      handleRemoveFromCart(token, _id);
+    }
   };
-    const { _id, title, image, price, qty } = product;
-    return(
-        <li className="cartItems text-primary-400 bg-neutral-400">
-                <div className="cartItem-image-container">
-                  <img src={image} alt={title} className="cartItem-image"/>
-                </div>
 
-                <div className="cartItem-detail-container">
-                  <h2 className="">{title}</h2>
-                  <p className="fw-semiBold">₹ {price}</p>
-                  <div className="quantity-area">
-                  <h3>Quantity: </h3>
-                  <div className="quantity-area">
-                    <Minus className="quantity-icons" onClick={() => handleMinusQuantity(qty, _id)} />
-                    <p>{qty}</p>
-                    <Plus className="quantity-icons" onClick={() => handlePlusQuantity(_id)} />
-                  </div>
-                  </div>
-                  
-                  <button className="accent-button cartItem-button" onClick={() => handleOnRemove(_id)}>
-                    Remove from cart
-                  </button>
-                </div>
-              </li>
-    )
-}
+  const handleOnRemove = () => {
+    handleRemoveFromCart(token, _id);
+  };
+
+  return (
+    <li className="cartItems text-primary-400 bg-neutral-400">
+      <div className="cartItem-image-container">
+        <img src={image} alt={title} className="cartItem-image" />
+      </div>
+
+      <div className="cartItem-detail-container">
+        <h2>{title}</h2>
+        <p className="fw-semiBold">₹ {price}</p>
+        <div className="quantity-area">
+          <h3>Quantity: </h3>
+          <div className="quantity-area">
+            <span onClick={handleMinusQuantity}>
+              <Minus className="quantity-icons" />
+            </span>
+            <p>{qty}</p>
+            <span onClick={handlePlusQuantity}>
+              <Plus className="quantity-icons" />
+            </span>
+          </div>
+        </div>
+
+        <div className="cart-buttons">
+          <button
+            className="accent-button cartItem-button"
+            onClick={handleOnRemove}
+          >
+            Remove from cart
+          </button>
+          <button
+            className="accent-button cartItem-button"
+            onClick={onMoveToWishlist}
+          >
+            Move to wishlist
+          </button>
+        </div>
+      </div>
+    </li>
+  );
+};
 
 export default CardInCart;

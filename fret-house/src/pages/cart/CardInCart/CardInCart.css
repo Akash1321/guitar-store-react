@@ -27,6 +27,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .quantity-area{
@@ -43,9 +44,14 @@
     border: 1px solid var(--clr-primary-300);
 }
 
+.cart-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .cartItem-button{
-    padding-inline: 1rem;
-    align-self: flex-start;
+    padding-inline: 0.5rem;
     font-weight: var(--fw-regular);
     background-color: var(--clr-neutral-400);
 }
@@ -69,6 +75,11 @@
 
     .cartItem-detail-container{
         padding: 0.5rem;
+    }
+
+    .cart-buttons{
+        flex-direction: row;
+        gap: 1rem;
     }
 }
 
