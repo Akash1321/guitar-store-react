@@ -6,18 +6,18 @@ import { checkPresence } from "../../utils/checkPresence";
 import { useData } from "../../context/DataContext";
 import { useAuth } from "../../context/AuthContext";
 
-const ProductCard = (product) => {
+const ProductCard = ({product, wishListCard}) => {
   const { _id, title, image, inStock, rating, price } = product;
-
   const {
     state,
     handleAddToWishlist,
     handleRemoveFromWishlist,
     handleAddToCart,
+    handleIncreaseQuantity
   } = useData();
   const { token } = useAuth();
-
   const navigate = useNavigate();
+  const inCart = checkPresence(state?.cartList, _id)
 
   const handleCardDetail = (id) => {
     navigate(`/products/${id}`);
@@ -46,10 +46,19 @@ const ProductCard = (product) => {
 
   const handleGoToCart = (e) => {
     e.stopPropagation();
-
     navigate("/cart");
   };
 
+  const handleAtc = (e) => {
+    e.stopPropagation();
+
+    if(inCart){
+      handleIncreaseQuantity(token, _id)
+    }else{
+      handleAddToCart(token, product)
+    }
+  }
+  
   return (
     <li
       className="card bg-neutral-400 text-primary-400 fw-regular"
@@ -90,7 +99,7 @@ const ProductCard = (product) => {
         <p className="product-name">{title}</p>
       </div>
 
-      {checkPresence(state?.cartList, _id) ? (
+      {!wishListCard ? (inCart ? (
         <button
           className="accent-button product-button"
           onClick={handleGoToCart}
@@ -105,7 +114,9 @@ const ProductCard = (product) => {
         >
           ADD TO CART
         </button>
-      )}
+      )) : null}
+
+      {wishListCard && <button className="primary-button product-button" onClick={handleAtc}>ADD TO CART</button>}
     </li>
   );
 };

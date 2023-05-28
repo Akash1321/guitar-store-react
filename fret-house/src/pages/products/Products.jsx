@@ -18,7 +18,6 @@ const Products = () => {
     filterProduct({type:"ONLY_INSTOCK", payload: e.target.checked})
   }
 
-
   return (
     <main className="container products-container">
 
@@ -38,7 +37,7 @@ const Products = () => {
 
       <ul className="product-list">
         {productsSorted?.map((product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </ul>
     </main>
