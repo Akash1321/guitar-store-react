@@ -14,7 +14,6 @@ const Products = () => {
   };
 
   const handleInStock = (e) => {
-    // console.log(e.target.checked)
     filterProduct({type:"ONLY_INSTOCK", payload: e.target.checked})
   }
 

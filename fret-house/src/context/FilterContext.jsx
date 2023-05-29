@@ -51,7 +51,7 @@ const initialState = {
     searchInput: "",
     ratingSelected: null,
     categories: [],
-    priceSelected: 50,
+    priceSelected: 88000,
     sort: ""
   };
 
@@ -103,7 +103,7 @@ export const FilterProvider = ({ children }) => {
 
   return (
     <FilterContext.Provider
-      value={{ filterProduct, productsSorted, onlyInStock }}
+      value={{ filterProduct, productsSorted, onlyInStock, priceSelected, categories, ratingSelected, sort }}
     >
       {children}
     </FilterContext.Provider>
