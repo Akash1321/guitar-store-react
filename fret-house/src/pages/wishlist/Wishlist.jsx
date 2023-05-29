@@ -22,7 +22,7 @@ const Wishlist = () => {
         <h1 className="fs-heading fw-bold products-heading">Wishlist</h1>
 
         {wishList.length === 0 && (
-          <div className="empty-wishlist">
+          <div className="empty-list">
             <p className="fw-semiBold text-primary-400 fs-heading">
               No Items Added
             </p>

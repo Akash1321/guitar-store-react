@@ -12,9 +12,13 @@ const Cart = () => {
     (total, items) => Number(items.price) + total,
     0
   );
+
   return state.cartList.length === 0 ? (
     <div className="container cart-container">
-      <h1>No items add to card</h1>
+      <div className="empty-list">
+        <p className="fw-semiBold text-primary-400 fs-heading">No items added to cart</p>
+        <button className="primary-button explore-button" onClick={() => navigate("/products")}>Explore Products</button>
+      </div>
     </div>
   ) : (
     <div className="container cart-container">
