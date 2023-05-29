@@ -104,7 +104,7 @@ const Checkout = () => {
                 <button className="primary-button">Add Address</button>
 
             </form>}
-            {console.log(orderDetails)}
+    
             </div>}
 
             {id ? <div className="addressSelected">
@@ -116,6 +116,7 @@ const Checkout = () => {
            </section>
 
            <section className="order-detail-section bg-neutral-400">
+            <div className="order-detail-container">
             <h2 className="fs-heading fw-semiBold od-heading">Order Details</h2>
             <div className="order-details">
                 <p>Price</p>
@@ -132,6 +133,7 @@ const Checkout = () => {
                 <p>₹ {totalPrice < 1000 ? totalPrice + 100 : totalPrice}</p>
             </div>
             <button className="primary-button">Place Order</button>
+            </div>
            </section>
          
         </main>
@@ -140,8 +142,3 @@ const Checkout = () => {
 
 export default Checkout;
 
-
-// {/* <h3>{address.name}</h3>
-// <p>{address.address}</p> 
-// <p>{address.city}, {address.state}, {address.pincode}</p>
-// <p>phone: {address.number}</p> */}
