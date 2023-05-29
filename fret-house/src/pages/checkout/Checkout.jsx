@@ -1,46 +1,41 @@
 import {useState} from "react";
 
 import {X, Plus} from "react-feather";
-import { v4 as uuid } from "uuid";
 
 import "./Checkout.css";
 import {useData} from "../../context/DataContext";
+import AddAddress from "../../components/address/AddAddress";
+import EditAddress from "../../components/address/EditAddress";
 
 const Checkout = () => {
     const {state, dispatch} = useData();
 
-    const [addressToggle, setAddressToggle] = useState({addresses: false, form: false});
+    const [addressToggle, setAddressToggle] = useState({addresses: false, addform: false, editform: false});
     const [orderDetails, setOrderDetails] = useState({
         productsOrdered: state.cartList,
         address: {}
-    })
+    });
+    const [toEdit, setToEdit] = useState("");
 
     const handleAllAddressesView = () => {
         setAddressToggle(prev => ({...prev, addresses: !prev.addresses}))
     }
 
-    const handleAddressDelete = (selectedId) => {
-        dispatch({type: "DELETE_ADDRESS", payload: selectedId})
-        console.log(selectedId)
-    }
-
-    const handleAddressForm = (e) => {
-        e.preventDefault()
-        const form = e.target;
-        const userName = form.userName.value;
-        const address = form.deliveryAddress.value;
-        const city = form.city.value;
-        const state = form.state.value;
-        const pincode = form.pincode.value;
-        const phoneNumber = form.number.value;
-        console.log(userName, address, city, state, pincode, phoneNumber);
-        dispatch({type: "ADD_ADDRESS", payload: {id: uuid(), userName, address, city, state, pincode, phoneNumber}})
+    const handleAddressDelete = (selectedId, e) => {
+        e.stopPropagation()
+        dispatch({type: "DELETE_ADDRESS", payload: selectedId});
     }
 
     const handleAddressSelected = (addressSelected) => {
         const address = state.addressList.find(({id}) => id === addressSelected)
         setOrderDetails(prev => ({...prev, address}))
-        setAddressToggle({addresses: false, form: false})
+        setAddressToggle({addresses: false, addform: false, editform: false})
+    }
+
+    const handleEditAddress = (selectedId, e) => {
+        e.stopPropagation();
+        setAddressToggle(prev => ({...prev, addform: false, editform: true}));
+        setToEdit(selectedId)
     }
 
     const totalPrice = state.cartList?.reduce(
@@ -69,41 +64,17 @@ const Checkout = () => {
                         <h3 className="fw-semiBold">{address.userName}</h3>
                         <p>{address.address}, {address.city}, {address.state}, {address.pincode}</p> 
                         <p>phone: {address.phoneNumber}</p>
-                        <p className="delete-address" onClick={() => handleAddressDelete(address.id)}>Delete</p>
+                        <div className="edit-delete-container">
+                        <p className="edit-delete edit-address" onClick={(e) => handleEditAddress(address.id, e)}>Edit</p>
+                        <p className="edit-delete delete-address" onClick={(e) => handleAddressDelete(address.id, e)}>Delete</p>
+                        </div>
                         </div>
                     </li>
                 ))}
             </ul>
-            <p className="add-new" onClick={() => setAddressToggle(prev => ({...prev, form: true}))}><Plus /> Add new address </p>
-            {addressToggle.form && <form className="login-form" onSubmit={handleAddressForm}>
-                <X className="hide-addAddress" onClick={() => setAddressToggle(prev => ({...prev, form: false}))}/>
-                <label className="field-labels">
-                    <input type="text" name="userName" placeholder="Name" className="login-fields bg-accent-bg fw-regular"/>
-                </label>
-
-                <label className="field-labels">
-                    <input type="text" name="deliveryAddress" placeholder="House no., street" className="login-fields bg-accent-bg fw-regular"/>   
-                </label>
-
-                <label className="field-labels">
-                    <input type="text" name="city" placeholder="City" className="login-fields bg-accent-bg fw-regular"/>
-                </label>
-
-                <label className="field-labels">
-                    <input type="text" name="state" placeholder="State" className="login-fields bg-accent-bg fw-regular"/>
-                </label>
-
-                <label className="field-labels">
-                    <input type="text" name="pincode" placeholder="Pincode" className="login-fields bg-accent-bg fw-regular"/>
-                </label>
-
-                <label className="field-labels">
-                    <input type="number" name="number" placeholder="Phone no." className="login-fields bg-accent-bg fw-regular"/>
-                </label>
-
-                <button className="primary-button">Add Address</button>
-
-            </form>}
+            <p className="add-new" onClick={() => setAddressToggle(prev => ({...prev, addform: true, editform: false}))}><Plus /> Add new address </p>
+            {addressToggle.addform && <AddAddress setAddressToggle={setAddressToggle}/>}
+            {addressToggle.editform && <EditAddress setAddressToggle={setAddressToggle} toEdit={toEdit}/>}
     
             </div>}
 

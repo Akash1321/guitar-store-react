@@ -35,6 +35,7 @@
   border-bottom: 1px solid var(--clr-primary-400);
   margin-bottom: 1rem;
   padding: 1rem;
+  cursor: context-menu;
 }
 
 .add-new {
@@ -43,10 +44,19 @@
   gap: 1rem;
 }
 
-.delete-address {
+.edit-delete-container{
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-delete {
   margin-top: 1rem;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.edit-address:hover{
+  color: #551A8B;
 }
 
 .delete-address:hover {

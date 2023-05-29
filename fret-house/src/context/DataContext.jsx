@@ -57,6 +57,13 @@ const dataReducer = (state, action) => {
         ...state, addressList: [...state.addressList, action.payload]
       }
 
+    case "EDIT_ADDRESS":
+      const change = action.payload;
+      console.log(change, "check");
+      return{
+        ...state, addressList: state.addressList.map(details => details.id === change.toEdit ? {...details, ...change.changedDetails} : details)
+      }
+
     case "DELETE_ADDRESS":
       return{
         ...state, addressList: state.addressList.filter(({id}) => id !== action.payload)
@@ -179,8 +186,6 @@ export const DataProvider = ({ children }) => {
       console.log(error);
     }
   };
-
-  console.log(state.cartList);
 
   return (
     <DataContext.Provider
