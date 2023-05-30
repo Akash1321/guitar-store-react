@@ -16,7 +16,7 @@ const AddAddress = ({setAddressToggle}) => {
         const state = form.state.value;
         const pincode = form.pincode.value;
         const phoneNumber = form.number.value;
-        console.log(userName, address, city, state, pincode, phoneNumber);
+    
         dispatch({type: "ADD_ADDRESS", payload: {id: uuid(), userName, address, city, state, pincode, phoneNumber}})
     }
 

@@ -20,6 +20,7 @@ const Home = () => {
           the perfect instrument to match your unique sound and personality.
           Browse our collection today and let your music soar!
         </p>
+        
       </header>
       <main className="categories container text-primary-400">
         <h2 className="fs-heading fw-bold">Shop by sound</h2>
