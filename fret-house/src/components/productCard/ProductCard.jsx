@@ -5,6 +5,8 @@ import "./ProductCard.css";
 import { checkPresence } from "../../utils/checkPresence";
 import { useData } from "../../context/DataContext";
 import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+
 
 const ProductCard = ({product, wishListCard}) => {
   const { _id, title, image, inStock, rating, price } = product;
@@ -27,13 +29,16 @@ const ProductCard = ({product, wishListCard}) => {
     e.stopPropagation();
     if (token) {
       handleAddToWishlist(token, product);
+      toast.success("Item added to wishlist")
+    }else{
+      toast.warn("Login to Continue");
     }
   };
 
   const removeFromWishlist = (e) => {
     e.stopPropagation();
-
     handleRemoveFromWishlist(token, _id);
+    toast.warn("Item removed from wishlist");
   };
 
   const addToCart = (e) => {
@@ -41,6 +46,9 @@ const ProductCard = ({product, wishListCard}) => {
 
     if (token) {
       handleAddToCart(token, product);
+      toast.success("Item added to cart")
+    }else{
+      toast.warn("Login to Continue");
     }
   };
 
@@ -53,12 +61,14 @@ const ProductCard = ({product, wishListCard}) => {
     e.stopPropagation();
 
     if(inCart){
-      handleIncreaseQuantity(token, _id)
+      handleIncreaseQuantity(token, _id);
+      toast.success("Quantity increased");
     }else{
-      handleAddToCart(token, product)
+      handleAddToCart(token, product);
+      toast.success("Item added to cart");
     }
   }
-  
+
   return (
     <li
       className="card bg-neutral-400 text-primary-400 fw-regular"

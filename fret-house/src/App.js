@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // import {useData} from "./context/DataContext";
 import "./App.css";
@@ -19,7 +21,7 @@ import Checkout from "./pages/checkout/Checkout";
 function App() {
   return (
     <div className="App">
-     <Nav /> 
+      <Nav />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -48,6 +50,18 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

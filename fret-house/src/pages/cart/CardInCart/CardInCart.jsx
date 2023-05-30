@@ -1,4 +1,5 @@
 import { Plus, Minus } from "react-feather";
+import {toast} from "react-toastify";
 
 import "./CardInCart.css";
 import { useAuth } from "../../../context/AuthContext";
@@ -22,8 +23,9 @@ const CardInCart = (product) => {
   };
 
   const handleMinusQuantity = () => {
-    if (qty < 1) {
+    if (qty <= 1) {
       handleRemoveFromCart(token, _id);
+      toast.warn("Item removed from cart");
     } else {
       handleDecreaseQuantity(token, _id);
     }
@@ -33,11 +35,15 @@ const CardInCart = (product) => {
     if (!checkPresence(wishList, _id)) {
       handleAddToWishlist(token, product);
       handleRemoveFromCart(token, _id);
+      toast.success("Item moved to wishlist");
+    }else{
+      toast.warn("Item already in wishlist");
     }
   };
 
   const handleOnRemove = () => {
     handleRemoveFromCart(token, _id);
+    toast.warn("Item removed from cart");
   };
 
   return (

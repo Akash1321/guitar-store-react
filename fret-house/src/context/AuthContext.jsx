@@ -1,6 +1,7 @@
 import {createContext, useContext, useState}  from "react";
 
 import {useNavigate, useLocation} from "react-router-dom";
+import {toast} from "react-toastify";
 
 
 const AuthContext = createContext();
@@ -53,6 +54,7 @@ export const AuthProvider = ({children}) => {
             setUser(foundUser)
             setToken(encodedToken)
             navigate(location?.state?.from?.pathname);
+            toast.success("Login successful");
         }
 
        }catch(error){
@@ -72,6 +74,7 @@ export const AuthProvider = ({children}) => {
                 setUser(createdUser);
                 setToken(encodedToken);
                 navigate("/products")
+                toast.success("Sign up successful")
             }
 
             
@@ -80,21 +83,13 @@ export const AuthProvider = ({children}) => {
         }
     }
 
-
     const handleLogout = () => {
         localStorage.removeItem("authDetails");
         setToken(null);
         setUser(null);
-        navigate("/logout")
+        navigate("/logout");
+        toast.warn("you are logged out");
     }
-
-
-
-    console.log(user)
-    console.log(token)
-
-    
-
 
     return (
     <AuthContext.Provider value={{user, token, handleLogin, handleSignUp ,handleLogout}}>
