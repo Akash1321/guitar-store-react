@@ -7,9 +7,11 @@ import "./ProductDetails.css";
 import { useAuth } from "../../context/AuthContext";
 import { useData } from "../../context/DataContext";
 import { checkPresence } from "../../utils/checkPresence";
+import Loader from "../../components/loader/Loader";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
+  const [loader, setLoader] = useState(true);
   const { token } = useAuth();
   const {
     state: { cartList, wishList },
@@ -23,6 +25,7 @@ const ProductDetails = () => {
   useEffect(() => {
     (async () => {
       const response = await fetch(`/api/products/${productId}`);
+      setLoader(false)
 
       if (response.ok) {
         const data = await response.json();
@@ -38,8 +41,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      {console.log(product)}
-      {console.log(productId)}
+    {loader && <Loader />}
 
       {_id && (
         <main className="container text-primary-400 detail-container">

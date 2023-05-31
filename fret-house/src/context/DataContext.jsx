@@ -1,4 +1,4 @@
-import { createContext, useEffect, useContext, useReducer } from "react";
+import { createContext, useEffect, useContext, useReducer, useState } from "react";
 
 import { useAuth } from "../context/AuthContext";
 import {
@@ -76,6 +76,7 @@ const dataReducer = (state, action) => {
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dataReducer, initialState);
+  const [loader, setLoader] = useState(true);
 
   const { token } = useAuth();
 
@@ -83,6 +84,7 @@ export const DataProvider = ({ children }) => {
     (async () => {
       try {
         const response = await fetch("/api/products");
+        setLoader(false);
         const products = await response.json();
 
         dispatch({ type: "GET_PRODUCTS", payload: products });
@@ -192,6 +194,7 @@ export const DataProvider = ({ children }) => {
       value={{
         state,
         dispatch,
+        loader,
         handleAddToWishlist,
         handleRemoveFromWishlist,
         handleAddToCart,

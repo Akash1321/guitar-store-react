@@ -5,9 +5,12 @@ import ProductCard from "../../components/productCard/ProductCard";
 import ProductFilter from "./components/filters/ProductFilter";
 import "./Products.css";
 
+
+
 const Products = () => {
   const [view, setView] = useState(false);
   const {filterProduct, productsSorted} = useFilter();
+
 
   const handleFilterView = () => {
     setView(prev => !prev)
