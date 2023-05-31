@@ -1,5 +1,6 @@
 .hero-section {
   margin-top: 6rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -20,11 +21,26 @@
 
 .categories {
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 3rem;
 }
 
-.temp button {
-  margin: 10px;
+.shop-category{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.category-image{
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+}
+
+.category-container{
+  padding: 1rem;
 }
 
 @media (min-width: 50em) {
@@ -36,5 +52,24 @@
 
   .hero-text {
     max-width: 50rem;
+  }
+
+  .categories {
+    margin-top: 4rem;
+  }
+
+  .shop-category{
+    padding: 1rem;
+  }
+
+  .category-image{
+    width: 18rem;
+    height: 18rem;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.5s ease-in-out;
+  }
+
+  .category-image:hover{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
   }
 }
