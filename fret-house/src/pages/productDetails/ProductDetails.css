@@ -24,6 +24,7 @@
 
 .details{
     width: 32rem;
+    padding-inline: 1rem;
 }
 
 .stockCheck{
@@ -58,6 +59,11 @@
 
 
 @media(min-width: 50em){
+
+    .details{
+        padding-inline: 0;
+    }
+
     .detail-container{
        margin-top: 7rem;
        gap: 0;
