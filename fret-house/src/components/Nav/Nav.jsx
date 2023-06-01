@@ -102,11 +102,11 @@ const Nav = () => {
           )}
           <li className="icon-with-count" onClick={goToWishlist}>
             <Heart className="nav-icons"  />
-            <ItemsCount count={wishList.length}/>
+            <ItemsCount count={token && wishList.length}/>
           </li>
           <li className="icon-with-count" onClick={goToCart}>
             <ShoppingCart className="nav-icons" />
-            <ItemsCount count={cartList.length}/>
+            <ItemsCount count={token && cartList.length}/>
           </li>
         </ul>
       </div>
