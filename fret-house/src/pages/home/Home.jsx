@@ -44,7 +44,7 @@ const Home = () => {
     <>
       <header className="hero-section container">
         <h1 className="hero-heading">Find the perfect instrument to match your style and passion.</h1>
-        <button className="primary-button" onClick={handleHeroButton}>SHOP NOW</button>
+        <button className="primary-button shop-now" onClick={handleHeroButton}>SHOP NOW</button>
         <p className="fs-400 text-primary-300 hero-text">
           Whether you're a seasoned musician or just starting out, we have
           everything you need to take your music to the next level. Our wide

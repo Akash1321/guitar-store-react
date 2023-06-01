@@ -54,6 +54,15 @@
     max-width: 50rem;
   }
 
+  .shop-now{
+    transition: all 0.5s ease-in-out;
+  }
+
+  .shop-now:hover{
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  }
+
   .categories {
     margin-top: 4rem;
   }
@@ -66,10 +75,11 @@
     width: 18rem;
     height: 18rem;
     margin-bottom: 1rem;
-    transition: box-shadow 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
   .category-image:hover{
+    transform: scale(1.1);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
   }
 }
