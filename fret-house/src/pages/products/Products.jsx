@@ -1,5 +1,7 @@
 import {useState} from "react";
 
+import {Filter} from "react-feather";
+
 import {useFilter} from "../../context/FilterContext";
 import ProductCard from "../../components/productCard/ProductCard";
 import ProductFilter from "./components/filters/ProductFilter";
@@ -32,7 +34,7 @@ const Products = () => {
           <input type="checkbox" className="all-products" onChange={handleInStock}/>
             Show All
           </label>
-        <button className="accent-button filters-button" onClick={handleFilterView}>Filters</button>
+        <button className="accent-button filters-button" onClick={handleFilterView}> <Filter color="#2D2A22"/> Filters</button>
         </div>
         
       </header>
