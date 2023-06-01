@@ -1,4 +1,4 @@
-import {lazy, Suspense} from "react";
+import {lazy, Suspense, useState} from "react";
 
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
@@ -19,13 +19,16 @@ import SignUp from "./pages/auth/signup/SignUp";
 import Logout from "./pages/auth/logout/Logout";
 import Checkout from "./pages/checkout/Checkout";
 import Loader from "./components/loader/Loader";
+import MobileSearch from "./components/Nav/mobileSearch/MobileSearch";
 
 const Products = lazy(() => import ("./pages/products/Products"));
 
 function App() {
+  const [mobileView, setMobileView] = useState(false);
   return (
     <div className="App">
-     <Nav /> 
+     <Nav setMobileView={setMobileView}/> 
+     {mobileView && <MobileSearch setMobileView={setMobileView}/>}
      <Suspense fallback={<Loader />}>
      <Routes>
         <Route path="/" element={<Home />} />

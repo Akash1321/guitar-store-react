@@ -1,23 +1,20 @@
-import { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-import { Search, Heart, ShoppingCart, User, X } from "react-feather";
+import { Search, Heart, ShoppingCart, User} from "react-feather";
 
 import "./Nav.css";
 import fretHouseLogo from "../../assets/fretHouseLogo.svg";
 import { useAuth } from "../../context/AuthContext";
 import { useData } from "../../context/DataContext";
-import { useFilter } from "../../context/FilterContext";
 import ItemsCount from "../ItemsCount/ItemsCount";
-import SearchResult from "./searchResult/SearchResult";
+import SearchBox from "../search/SearchBox";
 
-const Nav = () => {
-  const [searchInput, setSearchInput] = useState("");
+
+const Nav = ({setMobileView}) => {
+
   const { token } = useAuth();
   const {
     state: { cartList, wishList },
   } = useData();
-  const { filterProduct } = useFilter();
 
   const navigate = useNavigate();
 
@@ -41,26 +38,6 @@ const Nav = () => {
     navigate("/profile");
   };
 
-  const handleSearchForm = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const userInput = form.search.value;
-    if (userInput) {
-      filterProduct({ type: "SEARCH_PRODUCTS", payload: userInput });
-      navigate("/products");
-    }
-  };
-
-  const handleSearchOnChange = (e) => {
-    setSearchInput(e.target.value);
-    filterProduct({ type: "SEARCH_PRODUCTS", payload: e.target.value });
-  };
-
-  const handleCancelSearch = () => {
-    setSearchInput("");
-    filterProduct({ type: "SEARCH_PRODUCTS", payload: "" });
-  };
-
   return (
     <nav className="nav-bar bg-accent-bg">
       <div className="nav-container">
@@ -68,31 +45,7 @@ const Nav = () => {
           <img src={fretHouseLogo} alt="fret house logo" />
         </div>
 
-        <form className="search-form" onSubmit={handleSearchForm}>
-          <label className="searchInput text-primary-300">
-            <Search size={24} />
-            <input
-              type="text"
-              name="search"
-              value={searchInput}
-              placeholder="Search"
-              className="bg-accent-bg fw-regular search"
-              onChange={handleSearchOnChange}
-            />
-            {searchInput && (
-              <X
-                size={24}
-                className="cancel-search"
-                onClick={handleCancelSearch}
-              />
-            )}
-          </label>
-
-          <SearchResult
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-          />
-        </form>
+       <SearchBox view="search-form" />
 
         <ul className="links-container text-primary-400">
           {!token && (
@@ -103,7 +56,7 @@ const Nav = () => {
             </li>
           )}
           <li className="mobile-search">
-            <Search size={24} className="nav-icons" />
+            <Search size={24} className="nav-icons" onClick={() => setMobileView(true)}/>
           </li>
           {token && (
             <li>

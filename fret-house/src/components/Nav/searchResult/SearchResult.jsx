@@ -5,7 +5,7 @@ import "./SearchResult.css";
 import {useData} from "../../../context/DataContext";
 import {useFilter} from "../../../context/FilterContext";
 
-const SearchResult = ({searchInput, setSearchInput}) => {
+const SearchResult = ({searchInput, setSearchInput, setMobileView ,mobile}) => {
     const navigate = useNavigate();
     const {state: {products}} = useData();
     const {filterProduct} = useFilter();
@@ -16,11 +16,16 @@ const SearchResult = ({searchInput, setSearchInput}) => {
         navigate(`/products/${id}`);
         setSearchInput("");
         filterProduct({ type: "SEARCH_PRODUCTS", payload: "" });
+
+        if(mobile){
+            setMobileView(false);
+        }
+
     }
 
     return (
         <>
-        {searchInput && <div className="search-result-container text-primary-400">
+        {searchInput && <div className={`search-result-container text-primary-400 ${mobile ? `mobile` : `other-devices`}`}>
         <ul className="search-results">
             {searchedProducts.map(({_id, title, image, price}) => (
                 <li className="result-list" key={_id} onClick={() => handleSearchNavigate(_id)}>
