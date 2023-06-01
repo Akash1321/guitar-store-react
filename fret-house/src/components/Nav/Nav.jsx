@@ -57,7 +57,8 @@ const Nav = () => {
   }
 
   const handleCancelSearch = () => {
-    console.log("cancel clicked")
+    setSearchInput("");
+    filterProduct({type: "SEARCH_PRODUCTS", payload: ""});
   }
 
   return (
