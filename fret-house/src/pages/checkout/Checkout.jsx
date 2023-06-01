@@ -38,10 +38,14 @@ const Checkout = () => {
         setToEdit(selectedId)
     }
 
-    const totalPrice = state.cartList?.reduce(
-        (total, items) => Number(items.price) + total,
-        0
-      );
+    const {totalPrice, totalItem} = state.cartList?.reduce((totals, item) => {
+       
+        totals.totalPrice = Number(item.price) + totals.totalPrice;
+        totals.totalItem = item.qty + totals.totalItem;
+
+        return totals;
+    }, {totalPrice: 0, totalItem: 0})
+
 
     const {id, userName, address, city, pincode, phoneNumber} = orderDetails.address;
 
@@ -90,7 +94,7 @@ const Checkout = () => {
             <div className="order-detail-container">
             <h2 className="fs-heading fw-semiBold od-heading">Order Details</h2>
             <div className="order-details">
-                <p>Price</p>
+                <p>Price({totalItem} item)</p>
                 <p>₹ {totalPrice}</p>
             </div>
             <div className="order-details">
