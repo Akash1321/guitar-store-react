@@ -1,4 +1,9 @@
 .logout-display{
-    margin-top: 8rem;
+    margin-top: 10rem;
     text-align: center;
+}
+
+.logout-text{
+    color: var(--clr-accent-red);
+    margin-bottom: 2rem;
 }
