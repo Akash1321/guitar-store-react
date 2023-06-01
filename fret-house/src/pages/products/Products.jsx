@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-import {Filter} from "react-feather";
+import {Sliders} from "react-feather";
 
 import {useFilter} from "../../context/FilterContext";
 import ProductCard from "../../components/productCard/ProductCard";
@@ -34,7 +34,7 @@ const Products = () => {
           <input type="checkbox" className="all-products" onChange={handleInStock}/>
             Show All
           </label>
-        <button className="accent-button filters-button" onClick={handleFilterView}> <Filter color="#2D2A22"/> Filters</button>
+        <button className="accent-button filters-button" onClick={handleFilterView}> <Sliders size={16} color="#2D2A22"/> Filters</button>
         </div>
         
       </header>
