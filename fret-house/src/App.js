@@ -1,11 +1,10 @@
-import {lazy, Suspense, useState} from "react";
+import {lazy, Suspense, useState, useEffect} from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Mockman from "mockman-js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import {useData} from "./context/DataContext";
 import "./App.css";
 import RequiresAuth from "./components/RequiresAuth";
 import Nav from "./components/Nav/Nav";
@@ -21,17 +20,26 @@ import Checkout from "./pages/checkout/Checkout";
 import Loader from "./components/loader/Loader";
 import MobileSearch from "./components/Nav/mobileSearch/MobileSearch";
 import OrderSuccess from "./pages/orderSuccess/OrderSuccess";
+import PageNotFound from "./pages/pageNotFound/PageNotFound";
 
 const Products = lazy(() => import ("./pages/products/Products"));
 
 function App() {
   const [mobileView, setMobileView] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+
   return (
     <div className="App">
      <Nav setMobileView={setMobileView}/> 
      {mobileView && <MobileSearch setMobileView={setMobileView}/>}
      <Suspense fallback={<Loader />}>
      <Routes>
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />}/>
         <Route path="/products/:productId" element={<ProductDetails />} />
