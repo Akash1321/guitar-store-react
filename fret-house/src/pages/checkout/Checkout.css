@@ -28,9 +28,6 @@
   height: 1.5rem;
   accent-color: var(--clr-primary-400);
 }
-/* .address-container{
-    
-} */
 
 .addresses {
   display: flex;
