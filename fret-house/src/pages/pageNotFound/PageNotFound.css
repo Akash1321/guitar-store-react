@@ -1,0 +1,11 @@
+.page-not-found{
+    margin-top: 8rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.back-to-home{
+    align-self: center;
+}
