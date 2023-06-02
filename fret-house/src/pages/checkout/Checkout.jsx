@@ -60,6 +60,7 @@ const Checkout = () => {
       });
       clearCart();
       navigate("/orderSuccess");
+      toast.success("Order Placed")
     }else{
         toast.warn("Address not selected");
     }

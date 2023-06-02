@@ -97,7 +97,7 @@
 .order-details {
   display: flex;
   justify-content: space-between;
-  gap: 10rem;
+  gap: 5rem;
   padding: 0.5rem;
 }
 
@@ -122,5 +122,9 @@
 
   .order-detail-section {
     padding: 1rem;
+  }
+
+  .order-details {
+    gap: 10rem;
   }
 }
