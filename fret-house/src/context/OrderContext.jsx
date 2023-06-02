@@ -13,7 +13,7 @@ const orderReducer = (state, action) => {
       return { ...state, addressSelected: action.payload };
 
     case "ORDER_PLACED":
-      return { ...state, orderList: [...state.orderList, action.payload]};
+      return { ...state, orderList: [...state.orderList, action.payload] };
 
     default:
       return state;
@@ -27,7 +27,9 @@ export const OrderProvider = ({ children }) => {
   );
 
   return (
-    <OrderContext.Provider value={{ addressSelected, orderList, dispatchOrder }}>
+    <OrderContext.Provider
+      value={{ addressSelected, orderList, dispatchOrder }}
+    >
       {children}
     </OrderContext.Provider>
   );

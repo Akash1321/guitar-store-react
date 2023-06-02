@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import { X, Plus } from "react-feather";
 import { v4 as uuid } from "uuid";
-import {useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "./Checkout.css";
 import { useData } from "../../context/DataContext";
@@ -14,13 +14,12 @@ import EditAddress from "../../components/address/EditAddress";
 import AddressOptions from "../../components/address/AddressOptions";
 
 const Checkout = () => {
-
-    const [addressToggle, setAddressToggle] = useState({
-        addresses: false,
-        addform: false,
-        editform: false,
-      });
-      const [toEdit, setToEdit] = useState("");
+  const [addressToggle, setAddressToggle] = useState({
+    addresses: false,
+    addform: false,
+    editform: false,
+  });
+  const [toEdit, setToEdit] = useState("");
 
   const {
     state: { cartList },
@@ -50,19 +49,23 @@ const Checkout = () => {
 
   const { id, userName, address, city, pincode, phoneNumber } = addressSelected;
 
-  const orderDetail = {orderId: uuid(), amountPaid: totalPrice};
+  const orderDetail = { orderId: uuid(), amountPaid: totalPrice };
 
   const handleOrderPlacement = () => {
     if (addressSelected.id && cartList.length > 0) {
       dispatchOrder({
         type: "ORDER_PLACED",
-        payload: { orderDetail, deliveryAddress: addressSelected, orderedItems: cartList },
+        payload: {
+          orderDetail,
+          deliveryAddress: addressSelected,
+          orderedItems: cartList,
+        },
       });
       clearCart();
       navigate("/orderSuccess");
-      toast.success("Order Placed")
-    }else{
-        toast.warn("Address not selected");
+      toast.success("Order Placed");
+    } else {
+      toast.warn("Address not selected");
     }
   };
 
