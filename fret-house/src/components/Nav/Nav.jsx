@@ -65,11 +65,11 @@ const Nav = ({setMobileView}) => {
           )}
           <li className="icon-with-count" onClick={goToWishlist}>
             <Heart className="nav-icons" />
-            <ItemsCount count={token && wishList.length} />
+            <ItemsCount count={token && wishList?.length} />
           </li>
           <li className="icon-with-count" onClick={goToCart}>
             <ShoppingCart className="nav-icons" />
-            <ItemsCount count={token && cartList.length} />
+            <ItemsCount count={token && cartList?.length} />
           </li>
         </ul>
       </div>
