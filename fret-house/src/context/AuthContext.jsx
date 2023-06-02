@@ -1,6 +1,6 @@
 import {createContext, useContext, useState}  from "react";
 
-import {useNavigate, useLocation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 
 const AuthContext = createContext();
@@ -30,7 +30,6 @@ const userSignUp = (name, email, password) => {
 
 export const AuthProvider = ({children}) => {
     const navigate = useNavigate();
-    const location = useLocation();
 
     const localStorageToken = JSON.parse(localStorage.getItem("authDetails"))
     const [token, setToken] = useState(localStorageToken?.token);
@@ -49,7 +48,7 @@ export const AuthProvider = ({children}) => {
             setUser(foundUser)
             setToken(encodedToken)
             toast.success("Login successful");
-            navigate(location?.state?.from?.pathname)
+            navigate("/products");
         }
 
        }catch(error){
@@ -68,8 +67,8 @@ export const AuthProvider = ({children}) => {
                 localStorage.setItem("authDetails", JSON.stringify({user: createdUser, token: encodedToken}));
                 setUser(createdUser);
                 setToken(encodedToken);
-                navigate("/products")
-                toast.success("Sign up successful")
+                navigate("/products");
+                toast.success("Sign up successful");
             }
 
             
