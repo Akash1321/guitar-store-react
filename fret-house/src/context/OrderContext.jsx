@@ -26,7 +26,6 @@ export const OrderProvider = ({ children }) => {
     initialState
   );
 
-  console.log(orderList);
   return (
     <OrderContext.Provider value={{ addressSelected, orderList, dispatchOrder }}>
       {children}

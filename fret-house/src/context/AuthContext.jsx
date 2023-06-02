@@ -3,11 +3,7 @@ import {createContext, useContext, useState}  from "react";
 import {useNavigate, useLocation} from "react-router-dom";
 import {toast} from "react-toastify";
 
-
 const AuthContext = createContext();
-
-
-
 
 const userLogin = (email, password) => {
     return fetch("/api/auth/login", {
@@ -45,7 +41,6 @@ export const AuthProvider = ({children}) => {
 
        try{
         const response = await userLogin(email, password);
-        console.log(response)
 
         const { foundUser, encodedToken } = await response.json()
 
@@ -53,8 +48,8 @@ export const AuthProvider = ({children}) => {
             localStorage.setItem("authDetails", JSON.stringify({ user: foundUser, token: encodedToken }));
             setUser(foundUser)
             setToken(encodedToken)
-            navigate(location?.state?.from?.pathname);
             toast.success("Login successful");
+            navigate(location?.state?.from?.pathname)
         }
 
        }catch(error){
