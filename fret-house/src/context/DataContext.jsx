@@ -200,7 +200,7 @@ export const DataProvider = ({ children }) => {
         handleAddToCart,
         handleRemoveFromCart,
         handleIncreaseQuantity,
-        handleDecreaseQuantity
+        handleDecreaseQuantity,
       }}
     >
       {children}

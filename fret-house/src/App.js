@@ -20,6 +20,7 @@ import Logout from "./pages/auth/logout/Logout";
 import Checkout from "./pages/checkout/Checkout";
 import Loader from "./components/loader/Loader";
 import MobileSearch from "./components/Nav/mobileSearch/MobileSearch";
+import OrderSuccess from "./pages/orderSuccess/OrderSuccess";
 
 const Products = lazy(() => import ("./pages/products/Products"));
 
@@ -56,6 +57,7 @@ function App() {
         />
         <Route path="/profile" element={<Profile />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orderSuccess" element={<OrderSuccess />} />
       </Routes>
      </Suspense>
       

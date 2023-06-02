@@ -4,10 +4,7 @@ const OrderContext = createContext();
 
 const initialState = {
   addressSelected: {},
-  orderDetail: {
-    deliveryAddress: {},
-    orderedItems: []
-  },
+  orderList: [],
 };
 
 const orderReducer = (state, action) => {
@@ -16,7 +13,7 @@ const orderReducer = (state, action) => {
       return { ...state, addressSelected: action.payload };
 
     case "ORDER_PLACED":
-      return { ...state, orderedItems: action.payload };
+      return { ...state, orderList: [...state.orderList, action.payload]};
 
     default:
       return state;
@@ -24,12 +21,14 @@ const orderReducer = (state, action) => {
 };
 
 export const OrderProvider = ({ children }) => {
-  const [{ addressSelected }, dispatchOrder] = useReducer(
+  const [{ addressSelected, orderList }, dispatchOrder] = useReducer(
     orderReducer,
     initialState
   );
+
+  console.log(orderList);
   return (
-    <OrderContext.Provider value={{ addressSelected, dispatchOrder }}>
+    <OrderContext.Provider value={{ addressSelected, orderList, dispatchOrder }}>
       {children}
     </OrderContext.Provider>
   );
