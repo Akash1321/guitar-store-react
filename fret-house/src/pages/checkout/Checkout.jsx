@@ -4,41 +4,23 @@ import {X, Plus} from "react-feather";
 
 import "./Checkout.css";
 import {useData} from "../../context/DataContext";
+import {useOrder} from "../../context/OrderContext";
 import AddAddress from "../../components/address/AddAddress";
 import EditAddress from "../../components/address/EditAddress";
+import AddressOptions from "../../components/address/AddressOptions";
 
 const Checkout = () => {
-    const {state, dispatch} = useData();
+    const {state: {cartList}} = useData();
+    const {addressSelected} = useOrder();
 
     const [addressToggle, setAddressToggle] = useState({addresses: false, addform: false, editform: false});
-    const [orderDetails, setOrderDetails] = useState({
-        productsOrdered: state.cartList,
-        address: {}
-    });
     const [toEdit, setToEdit] = useState("");
 
     const handleAllAddressesView = () => {
         setAddressToggle(prev => ({...prev, addresses: !prev.addresses}))
     }
 
-    const handleAddressDelete = (selectedId, e) => {
-        e.stopPropagation()
-        dispatch({type: "DELETE_ADDRESS", payload: selectedId});
-    }
-
-    const handleAddressSelected = (addressSelected) => {
-        const address = state.addressList.find(({id}) => id === addressSelected)
-        setOrderDetails(prev => ({...prev, address}))
-        setAddressToggle({addresses: false, addform: false, editform: false})
-    }
-
-    const handleEditAddress = (selectedId, e) => {
-        e.stopPropagation();
-        setAddressToggle(prev => ({...prev, addform: false, editform: true}));
-        setToEdit(selectedId)
-    }
-
-    const {totalPrice, totalItem} = state.cartList?.reduce((totals, item) => {
+    const {totalPrice, totalItem} = cartList?.reduce((totals, item) => {
        
         totals.totalPrice = Number(item.price) + totals.totalPrice;
         totals.totalItem = item.qty + totals.totalItem;
@@ -47,7 +29,7 @@ const Checkout = () => {
     }, {totalPrice: 0, totalItem: 0})
 
 
-    const {id, userName, address, city, pincode, phoneNumber} = orderDetails.address;
+    const {id, userName, address, city, pincode, phoneNumber} = addressSelected;
 
     return (
         <main className="container checkout-container text-primary-400">
@@ -55,27 +37,12 @@ const Checkout = () => {
             <div className="address-section-header">
               <h2 className="fs-heading fw-semiBold">Delivery Address</h2>
               <span className="select-address" onClick={handleAllAddressesView}>
-                {addressToggle.addresses ? <X /> : "Select Address"}
+                {addressToggle.addresses ? <X /> : "Add Address"}
                 </span>
             </div>
             
             {addressToggle.addresses && <div>
-                <ul className="address-container">
-                {state?.addressList.map(address => (
-                    <li key={address.id} className="addresses" onClick={() => handleAddressSelected(address.id)}>
-                        <input type="radio" name="addressSelection" value={address.address} checked={address.id === orderDetails.address.id}/>
-                        <div>
-                        <h3 className="fw-semiBold">{address.userName}</h3>
-                        <p>{address.address}, {address.city}, {address.state}, {address.pincode}</p> 
-                        <p>phone: {address.phoneNumber}</p>
-                        <div className="edit-delete-container">
-                        <p className="edit-delete edit-address" onClick={(e) => handleEditAddress(address.id, e)}>Edit</p>
-                        <p className="edit-delete delete-address" onClick={(e) => handleAddressDelete(address.id, e)}>Delete</p>
-                        </div>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+            <AddressOptions setAddressToggle={setAddressToggle} setToEdit={setToEdit} />
             <p className="add-new" onClick={() => setAddressToggle(prev => ({...prev, addform: true, editform: false}))}><Plus /> Add new address </p>
             {addressToggle.addform && <AddAddress setAddressToggle={setAddressToggle}/>}
             {addressToggle.editform && <EditAddress setAddressToggle={setAddressToggle} toEdit={toEdit}/>}
@@ -84,7 +51,7 @@ const Checkout = () => {
 
             {id ? <div className="addressSelected">
                 <h3 className="fw-bold">{userName}</h3>
-                <p>{address}, {city}, {orderDetails.address.state}</p>
+                <p>{address}, {city}, {addressSelected.state}</p>
                 <p><span className="fw-semiBold text-primary-300">Pincode-</span> {pincode}</p>
                 <p><span className="fw-semiBold text-primary-300">Phone no.-</span> {phoneNumber}</p>
                 </div> : <p className="fw-bold no-address">No Address Selected</p>}
