@@ -32,7 +32,7 @@ npm start
 * Toast And Loaders
 * Responsive
 
-## Teach Stack
+## Tech Stack
 * React JS
 * React Router v6
 * React useContext + useReducer
