@@ -47,6 +47,7 @@ const AddAddress = ({ setAddressToggle }) => {
           type="text"
           name="userName"
           placeholder="Name"
+          required
           className="login-fields bg-accent-bg fw-regular"
         />
       </label>
@@ -56,6 +57,7 @@ const AddAddress = ({ setAddressToggle }) => {
           type="text"
           name="deliveryAddress"
           placeholder="House no., street"
+          required
           className="login-fields bg-accent-bg fw-regular"
         />
       </label>
@@ -65,6 +67,7 @@ const AddAddress = ({ setAddressToggle }) => {
           type="text"
           name="city"
           placeholder="City"
+          required
           className="login-fields bg-accent-bg fw-regular"
         />
       </label>
@@ -74,6 +77,7 @@ const AddAddress = ({ setAddressToggle }) => {
           type="text"
           name="state"
           placeholder="State"
+          required
           className="login-fields bg-accent-bg fw-regular"
         />
       </label>
@@ -83,6 +87,7 @@ const AddAddress = ({ setAddressToggle }) => {
           type="text"
           name="pincode"
           placeholder="Pincode"
+          required
           className="login-fields bg-accent-bg fw-regular"
         />
       </label>
@@ -92,6 +97,7 @@ const AddAddress = ({ setAddressToggle }) => {
           type="number"
           name="number"
           placeholder="Phone no."
+          required
           className="login-fields bg-accent-bg fw-regular"
         />
       </label>
