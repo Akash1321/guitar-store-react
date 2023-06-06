@@ -6,14 +6,14 @@ import CardInCart from "./CardInCart/CardInCart";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { state } = useData();
+  const { state: {cartList} } = useData();
 
-  const totalPrice = state.cartList?.reduce(
+  const totalPrice = cartList?.reduce(
     (total, items) => Number(items.price) + total,
     0
   );
 
-  return state.cartList.length === 0 ? (
+  return (cartList?.length === 0 || cartList === undefined) ? (
     <div className="container cart-container">
       <div className="empty-list">
         <p className="fw-semiBold text-primary-400 fs-heading">No items added to cart</p>
@@ -24,7 +24,7 @@ const Cart = () => {
     <div className="container cart-container">
       <section className="cartItems-section">
         <ul className="cartItems-container">
-          {state.cartList?.map((product) => (
+          {cartList?.map((product) => (
             <CardInCart {...product} key={product._id} />
           ))}
         </ul>
@@ -39,7 +39,7 @@ const Cart = () => {
           </div>
           <hr />
           <div className="items-body">
-            {state.cartList?.map(({ _id, price, title, qty }) => (
+            {cartList?.map(({ _id, price, title, qty }) => (
               <div key={_id} className="items">
                 <p className="cartItemsTitle">
                   {title} <span className="fw-semiBold">(X {qty})</span>

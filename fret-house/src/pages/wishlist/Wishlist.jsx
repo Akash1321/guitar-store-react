@@ -20,8 +20,9 @@ const Wishlist = () => {
       <header className="section-header">
 
         <h1 className="fs-heading fw-bold products-heading">Wishlist</h1>
+        {console.log(wishList)}
 
-        {wishList.length === 0 && (
+        {(wishList?.length === 0 || wishList === undefined) && (
           <div className="empty-list">
             <p className="fw-semiBold text-primary-400 fs-heading">
               No Items Added
@@ -38,7 +39,7 @@ const Wishlist = () => {
       </header>
 
       <ul className="product-list">
-        {wishList.map((product) => (
+        {wishList?.map((product) => (
           <ProductCard key={product.id} product={product} wishListCard />
         ))}
       </ul>
