@@ -1,5 +1,6 @@
 import { Plus, Minus } from "react-feather";
 import {toast} from "react-toastify";
+import {useNavigate, Link} from "react-router-dom";
 
 import "./CardInCart.css";
 import { useAuth } from "../../../context/AuthContext";
@@ -15,6 +16,7 @@ const CardInCart = (product) => {
     handleDecreaseQuantity,
     handleAddToWishlist,
   } = useData();
+  const navigate = useNavigate();
 
   const { _id, title, image, price, qty } = product;
 
@@ -48,12 +50,12 @@ const CardInCart = (product) => {
 
   return (
     <li className="cartItems text-primary-400 bg-neutral-400">
-      <div className="cartItem-image-container">
+      <div className="cartItem-image-container" onClick={() => navigate(`/products/${_id}`)}>
         <img src={image} alt={title} className="cartItem-image" />
       </div>
 
       <div className="cartItem-detail-container">
-        <h2>{title}</h2>
+        <Link to={`/products/${_id}`}><h2>{title}</h2></Link>
         <p className="fw-semiBold">₹ {price}</p>
         <div className="quantity-area">
           <h3>Quantity: </h3>
