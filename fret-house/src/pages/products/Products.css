@@ -40,6 +40,10 @@
     margin-top: 2.5rem;
 }
 
+.not-available{
+  text-align: center;
+}
+
 @media(min-width: 50em){
 
     .products-container{

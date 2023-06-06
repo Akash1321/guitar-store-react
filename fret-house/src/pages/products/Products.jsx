@@ -39,11 +39,11 @@ const Products = () => {
         
       </header>
 
-      <ul className="product-list">
+      {productsSorted?.length > 0 ? (<ul className="product-list">
         {productsSorted?.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </ul>
+      </ul>) : <p className="text-accent-red fs-heading not-available">Products not available</p>}
     </main>
   );
 };
