@@ -8,6 +8,8 @@ import { useAuth } from "../../../context/AuthContext";
 
 const SignUp = () => {
     const [passwordType, setPasswordType] = useState("password");
+    const [passwords, setPasswords] = useState({password: "", confirm: ""});
+
   const { handleSignUp } = useAuth();
 
   const handleOnSubmit = (e) => {
@@ -18,6 +20,8 @@ const SignUp = () => {
     const password = form.password.value;
     handleSignUp(name, email, password);
   };
+
+  const matchPasswords = (passwords.password === passwords.confirm);
 
   return (
     <main className="container login-container text-primary-400">
@@ -48,6 +52,7 @@ const SignUp = () => {
             name="password"
             placeholder="Password"
             required
+            onChange={(e) => setPasswords(prev => ({...prev, password: e.target.value}))}
             className="login-fields bg-accent-bg fw-regular"
           />
           {
@@ -59,11 +64,14 @@ const SignUp = () => {
             type="password"
             placeholder="Confirm Password"
             required
+            onChange={(e) => setPasswords(prev => ({...prev, confirm: e.target.value}))}
             className="login-fields bg-accent-bg fw-regular"
           />
+          
         </label>
+        <p className="text-accent-red">{(!matchPasswords && passwords.confirm) && "Passwords do not match"}</p>
 
-        <button className="primary-button login-buttons">SIGN UP</button>
+        <button className="primary-button login-buttons" disabled={!matchPasswords}>SIGN UP</button>
       </form>
       <p>Already have an account <Link to="/login">Login</Link></p>
     </main>
