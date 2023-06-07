@@ -39,7 +39,7 @@ const Checkout = () => {
 
   const { totalPrice, totalItem } = cartList?.reduce(
     (totals, item) => {
-      totals.totalPrice = Number(item.price) + totals.totalPrice;
+      totals.totalPrice = Number(item.price) * item.qty + totals.totalPrice;
       totals.totalItem = item.qty + totals.totalItem;
 
       return totals;

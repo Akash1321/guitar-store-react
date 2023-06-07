@@ -9,7 +9,7 @@ const Cart = () => {
   const { state: {cartList} } = useData();
 
   const totalPrice = cartList?.reduce(
-    (total, items) => Number(items.price) + total,
+    (total, items) => Number(items.price) * items.qty + total,
     0
   );
 
@@ -44,7 +44,7 @@ const Cart = () => {
                 <p className="cartItemsTitle">
                   {title} <span className="fw-semiBold">(X {qty})</span>
                 </p>
-                <p className="cartItemsPrice">₹ {price}</p>
+                <p className="cartItemsPrice">₹ {price * qty}</p>
               </div>
             ))}
           </div>
