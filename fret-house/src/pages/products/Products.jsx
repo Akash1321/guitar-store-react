@@ -43,7 +43,7 @@ const Products = () => {
         {productsSorted?.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </ul>) : <p className="text-accent-red fs-heading not-available">Products not available</p>}
+      </ul>) : <p className="text-accent-red fs-heading not-available">Item not found</p>}
     </main>
   );
 };

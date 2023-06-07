@@ -27,7 +27,7 @@ const SearchResult = ({searchInput, setSearchInput, setMobileView ,mobile}) => {
         <>
         {searchInput && <div className={`search-result-container text-primary-400 ${mobile ? `mobile` : `other-devices`}`}>
         <ul className="search-results">
-            {searchedProducts.map(({_id, title, image, price}) => (
+            {searchedProducts?.map(({_id, title, image, price}) => (
                 <li className="result-list" key={_id} onClick={() => handleSearchNavigate(_id)}>
                     <div className="search-image-container">
                     <img src={image} alt={title} className="search-image"/>
