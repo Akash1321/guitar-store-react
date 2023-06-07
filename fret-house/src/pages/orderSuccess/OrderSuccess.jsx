@@ -14,7 +14,7 @@ const OrderSuccess = () => {
 
     return (
         <div className="container order-success-container">
-            <h1 className="text-accent-green fs-heading fw-bold success-head">Order Placed</h1>
+            <h1 className="text-accent-green fs-heading fw-bold success-head">Order Successful</h1>
             <h2 className="fs-500 fw-semiBold text-primary-300">Order Summary</h2>
             <div className="text-primary-400 summary-details">
                 <p><span className="fw-semiBold">OrderId:</span> {orderId}</p>
