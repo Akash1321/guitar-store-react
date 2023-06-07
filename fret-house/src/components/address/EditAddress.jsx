@@ -33,9 +33,12 @@ const EditAddress = ({ setAddressToggle, toEdit }) => {
     };
 
     dispatch({ type: "EDIT_ADDRESS", payload: { toEdit, changedDetails } });
-    dispatchOrder({type: "SELECT_ADDRESS", payload: addressSelected.id})
     setAddressToggle((prev) => ({ ...prev, editform: false }));
     toast.success("Address edited");
+
+    if(addressSelected.id){
+      dispatchOrder({type: "SELECT_ADDRESS", payload: addressSelected.id})
+    }
   };
 
   const { userName, address, city, state, pincode, phoneNumber } =
