@@ -5,6 +5,11 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 40px -7px;
 }
 
 .label{
