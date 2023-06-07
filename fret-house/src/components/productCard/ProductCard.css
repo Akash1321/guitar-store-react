@@ -52,3 +52,6 @@
     padding-inline: 2rem;
 }
 
+.go-to-cart{
+    background-color: var(--clr-neutral-400);
+}

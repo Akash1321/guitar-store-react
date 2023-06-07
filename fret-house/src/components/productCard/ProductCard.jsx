@@ -111,7 +111,7 @@ const ProductCard = ({product, wishListCard}) => {
 
       {!wishListCard ? (inCart ? (
         <button
-          className="accent-button product-button"
+          className="accent-button product-button go-to-cart"
           onClick={handleGoToCart}
         >
           Go to cart
@@ -122,7 +122,7 @@ const ProductCard = ({product, wishListCard}) => {
           disabled={!inStock}
           onClick={addToCart}
         >
-          ADD TO CART
+          Add to cart
         </button>
       )) : null}
 
