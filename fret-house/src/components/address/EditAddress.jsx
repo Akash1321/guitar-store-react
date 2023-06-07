@@ -2,12 +2,15 @@ import { X } from "react-feather";
 import { toast } from "react-toastify";
 
 import { useData } from "../../context/DataContext";
+import {useOrder} from "../../context/OrderContext";
 
 const EditAddress = ({ setAddressToggle, toEdit }) => {
   const {
     state: { addressList },
     dispatch,
   } = useData();
+  const {addressSelected, dispatchOrder} = useOrder();
+
   const addressToChange = addressList.find(({ id }) => id === toEdit);
 
   const handleEditAddressForm = (e) => {
@@ -30,6 +33,7 @@ const EditAddress = ({ setAddressToggle, toEdit }) => {
     };
 
     dispatch({ type: "EDIT_ADDRESS", payload: { toEdit, changedDetails } });
+    dispatchOrder({type: "SELECT_ADDRESS", payload: addressSelected.id})
     setAddressToggle((prev) => ({ ...prev, editform: false }));
     toast.success("Address edited");
   };

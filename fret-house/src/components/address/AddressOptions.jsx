@@ -36,7 +36,7 @@ const AddressOptions = ({ setAddressToggle, setToEdit }) => {
               name="addressSelection"
               value={address.address}
               checked={address.id === addressSelected.id}
-              onChange={() => handleAddressSelected(address)}
+              onChange={() => handleAddressSelected(address.id)}
             />
           </div>
           <div>
