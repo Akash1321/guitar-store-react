@@ -13,7 +13,7 @@ const filterReducer = (state, action) => {
       return {...state, searchInput: action.payload.toLowerCase()}
 
     case "ONLY_INSTOCK":
-      return { ...state, onlyInStock: !action.payload };
+      return { ...state, onlyInStock: action.payload };
 
     case "RATING_FILTER":
       return { ...state, ratingSelected: action.payload };
@@ -47,7 +47,7 @@ const filterReducer = (state, action) => {
 
 const initialState = {
     productList: [],
-    onlyInStock: true,
+    onlyInStock: false,
     searchInput: "",
     ratingSelected: null,
     categories: [],
@@ -68,8 +68,8 @@ export const FilterProvider = ({ children }) => {
   ] = useReducer(filterReducer, initialState);
 
   const stockFilter = onlyInStock
-    ? productList.filter(({ inStock }) => inStock)
-    : productList;
+    ? productList
+    : productList.filter(({ inStock }) => inStock);
 
   const searchFilter = searchInput ? stockFilter.filter(({title}) => title.toLowerCase().includes(searchInput)) : stockFilter;
 
