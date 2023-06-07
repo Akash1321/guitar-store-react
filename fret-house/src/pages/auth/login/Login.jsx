@@ -44,7 +44,7 @@ const Login = () => {
         <button className="accent-button login-buttons" onClick={handleGuestLogin}>LOGIN AS GUEST</button>
       </form>
 
-      <p className="signup-link">Don't have an account  <Link to="/signup">Sign Up</Link></p>
+      <p className="signup-link">Don't have an account?  <Link to="/signup">Sign Up</Link></p>
     </main>
   );
 };

@@ -73,7 +73,7 @@ const SignUp = () => {
 
         <button className="primary-button login-buttons" disabled={!matchPasswords}>SIGN UP</button>
       </form>
-      <p>Already have an account <Link to="/login">Login</Link></p>
+      <p>Already have an account? <Link to="/login">Login</Link></p>
     </main>
   );
 };
