@@ -72,8 +72,6 @@ body {
 
 a:not([class]) {
   text-decoration-skip-ink: auto;
-  text-decoration: none;
-  color: var(--clr-primary-400);
 }
 
 img,

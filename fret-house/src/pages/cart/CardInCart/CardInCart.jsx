@@ -55,7 +55,7 @@ const CardInCart = (product) => {
       </div>
 
       <div className="cartItem-detail-container">
-        <Link to={`/products/${_id}`}><h2>{title}</h2></Link>
+        <Link to={`/products/${_id}`} className="link-to-detail"><h2>{title}</h2></Link>
         <p className="fw-semiBold">₹ {price}</p>
         <div className="quantity-area">
           <h3>Quantity: </h3>

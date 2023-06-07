@@ -30,6 +30,11 @@
     width: 100%;
 }
 
+.link-to-detail{
+    text-decoration: none;
+  color: var(--clr-primary-400);
+}
+
 .quantity-area{
     width: fit-content;
     display: flex;
